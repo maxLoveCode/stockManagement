@@ -61,4 +61,15 @@ public class WarehouseController extends BaseController {
 		result.put("rows", list);
 		return result;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/imageUpload")
+	public Map<String, Object> imageUpload()
+	{
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("uploaded", 1);
+		result.put("fileName", "filename");
+		result.put("url", "http://7xk6qx.com1.z0.glb.clouddn.com/1-1442367637275.jpg");
+		return result;
+	}
 }
