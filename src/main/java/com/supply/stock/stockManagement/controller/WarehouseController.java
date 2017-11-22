@@ -1,5 +1,6 @@
 package com.supply.stock.stockManagement.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,8 +9,10 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -18,6 +21,7 @@ import com.github.pagehelper.PageHelper;
 import com.supply.stock.stockManagement.dto.Message;
 import com.supply.stock.stockManagement.pojo.Warehouse;
 import com.supply.stock.stockManagement.service.WarehouseService;
+import com.supply.stock.stockManagement.service.QiniuService;
 import com.supply.stock.stockManagement.dto.BaseCondition;
 
 @Controller
@@ -26,11 +30,19 @@ public class WarehouseController extends BaseController {
 	
 	@Autowired
 	WarehouseService warehouseService;
+	@Autowired
+	QiniuService qiniuService;
+	
+	
 	//首页 index
-
 	@RequestMapping(value = "/index", method = RequestMethod.GET)
 	public String login() {
 		return "warehouse/index";
+	}
+	
+	@RequestMapping(value = "/detailView+{id}", method = RequestMethod.GET)
+	public String detailView(@PathVariable("id") Integer id) {
+		return "wechat/detailView";
 	}
 	
 	//添加
@@ -40,7 +52,6 @@ public class WarehouseController extends BaseController {
 	{
 		//Warehouse warehouse=new Warehouse();
 		warehouseService.insertSelective(warehouse);
-		
 		if (warehouse.getId() != 0) {
 			return successMessage();
 		} else {
@@ -67,14 +78,22 @@ public class WarehouseController extends BaseController {
 	
 	@ResponseBody
 	@RequestMapping(value = "/imageUpload")
-	public Map<String, Object> imageUpload(MultipartFile file, HttpServletRequest request)
+	public Map<String, Object> imageUpload(@RequestParam("upload")MultipartFile file, HttpServletRequest request)
 	{
-		System.out.println(request);
-		System.out.println(file);
 		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("uploaded", 1);
-		result.put("fileName", "filename");
-		result.put("url", "http://7xk6qx.com1.z0.glb.clouddn.com/1-1442367637275.jpg");
+		Date date = new Date();
+		if(qiniuService.upload(file, date.toString()))
+		{
+			result.put("uploaded", 1);
+			result.put("fileName", file.getName());
+			result.put("url", "http://ozsr8m125.bkt.clouddn.com/"+date.toString());
+		}
+		else
+		{
+			result.put("uploaded", 0);
+			result.put("fileName", date.toString());
+		}
 		return result;
 	}
+	
 }

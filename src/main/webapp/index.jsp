@@ -62,13 +62,18 @@
 				{
 					"menuid" : "8",
 					"icon" : "icon-sys",
-					"menuname" : "供车管理",
+					"menuname" : "后台管理",
 					"menus" : [
 							{
 								"menuname" : "仓库管理",
 								"icon" : "icon-nav",
 								"url" : "${pageContext.request.contextPath}"
 										+ "/warehouse/index"
+							},{
+								"menuname" : "订单管理",
+								"icon" : "icon-nav",
+								"url" : "${pageContext.request.contextPath}"
+										+ "/order/index"
 							}]
 				} ]
 	};

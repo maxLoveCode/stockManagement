@@ -27,7 +27,6 @@
 						{
 							url : "${pageContext.request.contextPath}"
 									+ '/warehouse/list',
-							onRowContextMenu : onRowContextMenu,
 							toolbar : '#toolbar',
 							columns : [ [
 									{
@@ -120,17 +119,13 @@
 								});
 							}
 						});
-
-		$('#mm').menu(
-				{
-					onClick : function(item) {
-						console.log(item.name);
-						if (item.name == "reset") {
-							$('#password-reset').dialog('open').dialog(
-									'setTitle', '编辑用户');
-						}
-					}
-				});
+						
+						$('#fb').filebox({
+   							buttonText: '选择文件',
+    						buttonAlign: 'right',
+    						accept: 'image/*',
+    						onChange: uploadFrontPage
+						})
 	});
 <%@ include file="/common/dateFormatter.jsp" %>
 	
@@ -181,22 +176,21 @@
 			</div>
 			
 			<div class="fitem">
-				<label>地址:</label> <input name="mobile" id="mobile"
+				<label>地址:</label> <input name="address" id="address"
 					class="easyui-validatebox" required=" ture">
 			</div>
 			<div class="fitem">
-				<label>面积:</label> <input name="mobile" id="mobile"
+				<label>面积:</label> <input name="area" id="area"
 					class="easyui-validatebox" required=" ture">
 			</div>
 			
 			<div class="fitem">
-				<label>选择照片:</label> <input id="fileupload" type="button"
-					value="选择文件">
-				<input id="upload" type="button" value="上传">
+				<label>选择照片:</label> 
+					<input id="fb" type="text" style="width:300px">
 			</div>
-			<textarea name="editor1"></textarea>
+			<textarea name="editor1" id="editor1"></textarea>
 		<script>
-			CKEDITOR.replace( 'editor1' );
+			CKEDITOR.replace('editor1');
 		</script>
 			</form>
 			<!--进度条 -->
@@ -211,10 +205,6 @@
 		
 </div>
 
-		<div id="mm" class="easyui-menu" style="width: 150px;">
-			<div data-options="iconCls:'icon-undo'" name="reset">重置密码</div>
-		</div>
-		<%@ include file="/common/passwordReset.jsp"%>
 </body>
 
 <script type="text/javascript" src="http://webapi.amap.com/demos/js/liteToolbar.js"></script>
@@ -286,63 +276,84 @@
         });
     }
     
+    function uploadFrontPage(newValue, oldValue){
+    	console.log("click");
+    	console.log(newValue);
+    	console.log(oldValue);
+    	if(oldValue != newValue)
+    	{
+    	    var form = new FormData();
+    	    form.append("upload",newValue); 
+            $.ajax({
+                url:"${pageContext.request.contextPath}/warehouse/imageUpload",
+                type:"post",
+                data:form,
+                processData:false,
+                contentType:false,
+                success:function(data){
+                    console.log("over..");
+                },
+                error:function(e){
+                    alert("错误！！");
+                }
+            });        
+    	}
+    }
+    
 	/*上传照片  */
 	var array = new Array();
 	var isnew = true;
-	var uploader = Qiniu
-			.uploader({
-				runtimes : 'html5,flash,html4',
-				browse_button : 'fileupload',
-				max_file_size : '4mb',
-				flash_swf_url : "${pageContext.request.contextPath}/static/plupload/moxie.swf",
-				dragdrop : true,
-				chunk_size : '4mb',
-				multi_selection : !(mOxie.Env.OS.toLowerCase() === "ios"),
-				uptoken_url : "${pageContext.request.contextPath}/file/getToken",
-				domain : 'vehicle',
-				get_new_uptoken : false,
-				auto_start : false,
-				log_level : 5,
-				init : {
-					'FilesAdded' : function(up, files) {
-						plupload.each(files, function(file) {
-							var str = file.type;
-							var reg = /(.*).(jpg|jpeg|png)$/;
-							if (!reg.test(str)) {
-								$.messager.alert("提示", "上传文件格式错误");
-							}
-						});
-						$("#progressDiv").show();
-					},
-					'UploadProgress' : function(up, file) {
-						$('#progress').progressbar({
-							value : file.percent
-						});
-					},
-					'UploadComplete' : function() {
-						alert("上传完成")
-						$('#progress').progressbar({
-							value : 0
-						});
-						$("#progressDiv").hide();
-					},
-					'FileUploaded' : function(up, file, info) {
-						var res = $.parseJSON(info);
-						array.push("omfri0aw6.bkt.clouddn.com/" + res.key);
-					},
-					'Error' : function(up, err, errTip) {
-						alert("上传失败: " + errTip)
-					}
-				}
-			});
+// 	var uploader = Qiniu
+// 			.uploader({
+// 				runtimes : 'html5,flash,html4',
+// 				browse_button : 'fileupload',
+// 				max_file_size : '4mb',
+// 				flash_swf_url : "${pageContext.request.contextPath}/static/plupload/moxie.swf",
+// 				dragdrop : true,
+// 				chunk_size : '4mb',
+// 				multi_selection : !(mOxie.Env.OS.toLowerCase() === "ios"),
+// 				uptoken_url : "${pageContext.request.contextPath}/file/getToken",
+// 				domain : 'vehicle',
+// 				get_new_uptoken : false,
+// 				auto_start : false,
+// 				log_level : 5,
+// 				init : {
+// 					'FilesAdded' : function(up, files) {
+// 						plupload.each(files, function(file) {
+// 							var str = file.type;
+// 							var reg = /(.*).(jpg|jpeg|png)$/;
+// 							if (!reg.test(str)) {
+// 								$.messager.alert("提示", "上传文件格式错误");
+// 							}
+// 						});
+// 						$("#progressDiv").show();
+// 					},
+// 					'UploadProgress' : function(up, file) {
+// 						$('#progress').progressbar({
+// 							value : file.percent
+// 						});
+// 					},
+// 					'UploadComplete' : function() {
+// 						alert("上传完成")
+// 						$('#progress').progressbar({
+// 							value : 0
+// 						});
+// 						$("#progressDiv").hide();
+// 					},
+// 					'FileUploaded' : function(up, file, info) {
+// 						var res = $.parseJSON(info);
+// 						array.push("omfri0aw6.bkt.clouddn.com/" + res.key);
+// 					},
+// 					'Error' : function(up, err, errTip) {
+// 						alert("上传失败: " + errTip)
+// 					}
+// 				}
+// 			});
 
 	$('#upload').bind('click', function() {
 		uploader.start();
 	});
 	var url;
-	var passwordResetUrl = "${pageContext.request.contextPath}"
-			+ '/driver/resetPassword';
-
 	function newDriver() {
 		$('#dlg').dialog('open').dialog('setTitle', '新增仓库');
 		$('#fm').form('clear');
@@ -363,6 +374,7 @@
 		}
 	}
 
+	//保存提交按钮
 	$("#save-btn").click(function() {
 				$.ajax({
 					type : "post",
@@ -376,6 +388,7 @@
 						district:districtSelect.options[districtSelect.selectedIndex].text,
 						address: $("#address").val(),
 						area: $("#area").val(),
+						article: CKEDITOR.instances.editor1.getData(),
 						images : array.toString()
 					},
 					error : function(request) {
@@ -415,61 +428,11 @@
 		}
 	}
 
-	function onRowContextMenu(e, rowIndex, rowData) {
-		e.preventDefault();
-		$(this).datagrid('selectRow', rowIndex); //选中当前行
-		$('#mm').menu('show', {
-			left : e.pageX,
-			top : e.pageY
-		});
-	}
-
-	function resetPassword() {
-		$('#password-fm').form('submit', {
-			url : passwordResetUrl,
-			onSubmit : function() {
-				$('#userId').val($('#dg').datagrid('getSelected').id);
-				return $(this).form('validate');
-			},
-			success : function(result) {
-				var result = eval('(' + result + ')');
-				if (result.success) {
-					$.messager.show({
-						title : "成功",
-						msg : "修改成功"
-					});
-					$('#password-reset').dialog('close');
-				} else {
-					$.messager.show({
-						title : "失败",
-						msg : result.msg
-					});
-				}
-			}
-		});
-	}
 
 	function searchkw(value, name) {
 		$('#dg').datagrid('reload', {
 			'keywords' : value
 		});
-	}
-	
-	
-	function DO(data){
-		if (data.success) {
-			$.messager.show({
-				title : "成功",
-				msg : "操作成功"
-			});
-			$('#dlg').dialog('close'); // close the dialog
-			$('#dg').datagrid('reload'); // reload the user data
-		} else {
-			$.messager.show({
-				title : "失败",
-				msg : data.msg
-			});
-		}
 	}
 		
 </script>

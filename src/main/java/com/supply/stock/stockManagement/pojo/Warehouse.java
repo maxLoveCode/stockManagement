@@ -21,6 +21,9 @@ public class Warehouse extends Base{
 	
 	@Column(name = "contact")
 	private String contact;
+	
+	@Column(name = "article")
+	private String article;
 
 	public String getName() {
 		return name;
@@ -60,5 +63,17 @@ public class Warehouse extends Base{
 
 	public void setContact(String contact) {
 		this.contact = contact;
+	}
+
+	public String getArticle() {
+		return article;
+	}
+
+	public void setArticle(String article) {
+		this.article = article;
+	}
+
+	public void setProvince(String province) {
+		this.province = province;
 	}
 }

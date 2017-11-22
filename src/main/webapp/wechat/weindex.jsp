@@ -82,8 +82,8 @@ body{ background:#f3f3f3;}
             <div class="llRightInfo">
                 <div class="llName">${item.name}</div>
                 <div class="llBtns">
-                    <a href="http://prologis.juxtstaging.com/storage/1"><img src="./安博 - 仓库查询_files/btn2.png"></a>
-                    <a href="http://prologis.juxtstaging.com/visit/1"><img src="./安博 - 仓库查询_files/btn3.png"></a>
+                    <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}"><img src="${pageContext.request.contextPath}/static/images/btn2.png"></a>
+                    <a href="${pageContext.request.contextPath}/order/appointmentIndex"><img src="${pageContext.request.contextPath}/static/images/btn3.png"></a>
                 </div>
             </div>
             <div class="clear"></div>
@@ -156,30 +156,6 @@ body{ background:#f3f3f3;}
     $('#district,#city,#area').change(function(){
         selectStorage();
     });
-        /*
-        $('#district,#city,#area').change(function(){
-            var district = $('#district').val();
-            var city = $('#city').val();
-            var area = $('#area').val();
-            if( district != '' && city != '' && area != ''){
-                $('.loftList').html('<div class="llName">加载中...</div>');
-                var url = 'http://prologis.juxtstaging.com/storages/list';
-                $.getJSON(url, {district:district,city:city,area:area}, function(json){
-                    //$('#storage').html(data);
-                    var html = '';
-                    if(json && json.ret == 0){
-                        $.each(json.data,function(i){
-                            html += '<div class="loftLine"><img src="'+'/uploads/'+json.data[i].imgUrl+'" class="loftLineImg"><div class="llRightInfo"><div class="llName">'+json.data[i].title+'</div><div class="llBtns"><a href="'+json.data[i].detailUrl+'"><img src="'+'/bundles/app/default/'+'images/btn2.png"></a><a href="'+json.data[i].visitUrl+'"><img src="'+'/bundles/app/default/'+'images/btn3.png"></a></div></div><div class="clear"></div></div>';
-                        })
-                    }
-                    else{
-                        html = '<div class="llName">没有您需要的结果</div>';
-                    }
-                    $('.loftList').html(html);
-                })
-            }
-        })
-        */
     })
     </script>
 
