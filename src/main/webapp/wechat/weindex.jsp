@@ -78,7 +78,7 @@ body{ background:#f3f3f3;}
     
         
         <div class="loftLine" data-district="华东" data-city="上海" data-area="35000">
-            <img src="./安博 - 仓库查询_files/cc3e274a46bcddb8632121628d3b6e1d.jpeg" class="loftLineImg">
+            <img src="${item.frontPage}" class="loftLineImg">
             <div class="llRightInfo">
                 <div class="llName">${item.name}</div>
                 <div class="llBtns">
