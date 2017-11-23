@@ -125,7 +125,9 @@ public class IndexController extends BaseController {
 	public String weindex(HttpSession session) {
 		List<Warehouse> indexList = warehouseService.select(new Warehouse());
 		System.out.println(indexList);
-		session.setAttribute("list", indexList);
+		session.setAttribute("list", indexList);session.setAttribute(SESSION_ID, session.getId());
+		session.setAttribute(SESSION_NAME, "wechat");
+		session.setAttribute(WEBSOCKET_USERNAME, "wechat");
 		return "wechat/weindex";
 	}
 }
