@@ -22,7 +22,6 @@ public class SessionInterceptor implements HandlerInterceptor {
 			response.sendRedirect(request.getContextPath() + "/login");
 			
 			System.out.println(request.getSession().getAttribute(BaseController.SESSION_ID));
-			System.out.println("======REDIRECT======");
 			return false;
 		}
 	}
