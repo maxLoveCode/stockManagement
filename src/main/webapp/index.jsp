@@ -25,6 +25,9 @@
 	src='${pageContext.request.contextPath}/static/js/index.js'>
 	
 </script>
+<script type="text/javascript"
+	
+</script>
 <script type="text/javascript">
 	
 	var _menus = {

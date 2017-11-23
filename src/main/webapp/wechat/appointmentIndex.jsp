@@ -25,7 +25,7 @@
     
     
     <body>
-    <form class="demoform">
+    <form class="registerform" action="order/appoint">
     <div class="bar bar-header">
       <div class="h1 title">预约登记</div>
     </div>
@@ -34,19 +34,19 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">姓名</span>
-          <input type="text" name="name" nullmsg="请输入姓名！" datatype="s2-5" errormsg="姓名至少2个字符,最多5个字符！">
+          <input type="text" name="visitName" nullmsg="请输入姓名！" datatype="s2-5" errormsg="姓名至少2个字符,最多5个字符！">
         </label>
         <label class="item item-input">
           <span class="input-label">联系电话</span>
-          <input type="text" name="phoneNumber" datatype="m" nullmsg="请输入手机号码！" errormsg="手机号码不正确！">
+          <input type="text" name="phone" datatype="m" nullmsg="请输入手机号码！" errormsg="手机号码不正确！">
         </label>
         <label class="item item-input">
           <span class="input-label">公司名称</span>
-          <input type="text"name="compny" datatype="s2-16" nullmsg="请输入公司名称！">
+          <input type="text"name="company" datatype="s2-16" nullmsg="请输入公司名称！">
         </label>
         <label class="item item-input">
           <span class="input-label">参观时间</span>
-          <input type="text" name="vistitTime" datatype="date"
+          <input type="text" name="visitTime" datatype="date"
 						nullmsg="请输入参观时间！" errormsg="请输入正确的日期格式，如1996-01-29">
         </label>
         <div class="bar">
@@ -55,18 +55,18 @@
     <div class="content has-header">
       <div class="list">
         <label class="item item-input">
-          <span class="input-label">仓库</span><select class="button button-defut " style="width: 200px;" name="country"
+          <span class="input-label">仓库</span><select class="button button-defut " style="width: 200px;" name="wareHouseid"
 						datatype="*" nullmsg="请选择！">
-          	<option value="one">上海桃浦冷库</option>
-                                    <option value="two">上海沅江库</option>
-                                    <option value="three">南京冷库</option>
+          	<option value="1">上海桃浦冷库</option>
+                                    <option value="2">上海沅江库</option>
+                                    <option value="3">南京冷库</option>
           </select>
-          <input type="text">
         </label>
         	
       </div>
       <div class="padding">
-        <button class="button button-block button-positive">预约</button>
+      <input type="submit" class="button button-block button-positive" value="预约"/>
+      
       </div>
     </div>
     </form>
@@ -74,7 +74,29 @@
   
   <script>
   		
-$(".demoform").Validform();
+/* $(".registerform").Validform(
+		{
+			datatype : {
+				"zh1-6" : /^[\u4E00-\u9FA5\uf900-\ufa2d]{1,6}$/
+			},
+			tiptype : 2,
+			callback : function(form) {
+				if ($("input[name='file']").val() == null
+						|| $("input[name='file']").val() == "") {
+					alert("请上传证件图片！");
+					return false;
+
+				}
+				var check = confirm("您确定要提交表单吗？");
+				if (check) {
+					form[0].submit();
+				}
+
+				return false;
+			}
+		}
+		
+		); */
   	
   </script>
 </html>

@@ -8,10 +8,13 @@
 		<title>菜鸟教程(runoob.com)</title>
 		<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
 		<script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
-		
+		 <script type="text/javascript">
+        angular.module('ionicApp', ['ionic']);
+        </script>
 	</head>
 	<body>
-
+<ion-view title="Home" hide-nav-bar="true">
+      <ion-scroll zooming="true" direction="xy" style="width: 500px; height: 500px">
 		<div class="bar bar-header bar-positive">
 			<a class="button icon-right ion-chevron-left button-positive"></a>
 			<h1 class="title">${warehouse.name}</h1>
@@ -55,6 +58,8 @@
 
 				
 			</div>
+					     </ion-scroll>
+    </ion-view>
 		<div class="bar bar-footer bar-positive">
 			<div class="title">预约参观</div>
 		</div>
