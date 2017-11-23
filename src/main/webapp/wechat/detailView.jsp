@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-		<title>菜鸟教程(runoob.com)</title>
+		<title>郑明 - 仓库详情</title>
 		<link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
 		<script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
 		 <script type="text/javascript">
@@ -16,7 +16,7 @@
 <ion-view title="Home" hide-nav-bar="true">
       <ion-scroll zooming="true" direction="xy" style="width: 500px; height: 500px">
 		<div class="bar bar-header bar-positive">
-			<a class="button icon-right ion-chevron-left button-positive"></a>
+			<a class="button icon-right ion-chevron-left button-positive" href="javascript :;" onClick="javascript :history.back(-1);"></a>
 			<h1 class="title">${warehouse.name}</h1>
 		</div>
 		<div class="item item-image">
