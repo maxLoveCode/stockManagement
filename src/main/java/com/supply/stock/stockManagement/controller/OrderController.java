@@ -26,7 +26,7 @@ public class OrderController extends BaseController{
 	 * Insert预约参观
 	 * 
 	 */
-	@RequestMapping(value="/appoint")
+	@RequestMapping(value="/appoint",method = RequestMethod.GET)
 	public String appoint(Order order) {
 		orderService.insertSelective(order);
 		return "forward:/weindex";
@@ -37,7 +37,7 @@ public class OrderController extends BaseController{
 	 * orderList
 	 */
 	@ResponseBody
-	@RequestMapping("orderList")
+	@RequestMapping(value = "orderList")
 	public List<Order> orderList(BaseCondition condition) {
 		List<Order> list = orderService.selectList();
 		Map<String,Object> result = new HashMap<String, Object>();

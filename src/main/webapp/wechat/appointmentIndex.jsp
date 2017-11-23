@@ -25,7 +25,7 @@
     
     <body>
 
-    <form  action="appoint" method="post">
+    <form  id = "form" action="appoint" method="get">
 
     <div class="bar bar-header">
       <div class="h1 title">预约登记</div>
@@ -84,23 +84,12 @@
   
   <script>
   		
-/*  $(".registerform").Validform(
-		{
-			datatype : {
-				"zh1-6" : /^[\u4E00-\u9FA5\uf900-\ufa2d]{1,6}$/
-			},
-			tiptype : 2,
-			callback : function(form) {
-				var check = confirm("您确定要提交表单吗？");
-				if (check) {
-					form[0].submit();
-				}
-
-				return false;
-			}
-		}
+$("#form").submit(function(event) {
+    $.get($(this).attr("action"), { serial: $("#serial").val() })
+    .done(function(data) {
+		alert("操作成功");
+    });
+});
 		
-		); 
-  	 */
   </script>
 </html>
