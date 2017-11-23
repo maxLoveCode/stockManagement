@@ -48,23 +48,17 @@
         <label class="item item-input">
           <span class="input-label">参观时间</span>
           
-          <input type="text" name="visitTime" datatype="date"
-						nullmsg="请输入参观时间！" errormsg="请输入正确的日期格式，如1996-01-29">
-						<form action="/save-birthday" method="POST">
+          <input type="text" class="date-picker form-control" data-date-start-view="decade" data-date-format="mm/dd/yy" data-date="02/01/99" value="02/01/99" name="birthday" placeholder="MM/DD/YY" />
+
   <div class="form-group">
-    <label class="control-label">Birthday</label>
     <div class="input-group">
 
       <div class="input-group-addon">
         <i class="fa fa-calendar"></i>
       </div>
 
-      <!-- this is where the magic happens -->
-      <input type="text" class="date-picker form-control" data-date-start-view="decade" data-date-format="mm/dd/yy" data-date="02/01/99" value="02/01/99" name="birthday" placeholder="MM/DD/YY" />
-
     </div>
   </div>
-</form>
         </label>
         <div class="bar">
       <div class="h1 title">选择仓库</div>
