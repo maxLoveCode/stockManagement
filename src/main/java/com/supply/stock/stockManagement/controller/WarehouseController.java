@@ -99,4 +99,16 @@ public class WarehouseController extends BaseController {
 		return result;
 	}
 	
+	/**
+	 * 获得列表数据
+	 * 
+	 * @param model
+	 * @return 
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/selectList")
+	public List<Warehouse> selectList(BaseCondition condition) {
+		return warehouseService.select(new Warehouse());
+	}
+	
 }
