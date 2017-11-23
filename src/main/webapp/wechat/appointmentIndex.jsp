@@ -11,13 +11,12 @@
         <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
         <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css" />
+        <script src="/bower/bootstrap-datepicker-mobile/bootstrap-datepicker-mobile.js"></script>
 		<style>
 		.input-label{
 				color: blue;
 				font-weight:bold ;
 			}
-			
-			
 		</style>
 		
     </head>
@@ -48,8 +47,24 @@
         </label>
         <label class="item item-input">
           <span class="input-label">参观时间</span>
+          
           <input type="text" name="visitTime" datatype="date"
 						nullmsg="请输入参观时间！" errormsg="请输入正确的日期格式，如1996-01-29">
+						<form action="/save-birthday" method="POST">
+  <div class="form-group">
+    <label class="control-label">Birthday</label>
+    <div class="input-group">
+
+      <div class="input-group-addon">
+        <i class="fa fa-calendar"></i>
+      </div>
+
+      <!-- this is where the magic happens -->
+      <input type="text" class="date-picker form-control" data-date-start-view="decade" data-date-format="mm/dd/yy" data-date="02/01/99" value="02/01/99" name="birthday" placeholder="MM/DD/YY" />
+
+    </div>
+  </div>
+</form>
         </label>
         <div class="bar">
       <div class="h1 title">选择仓库</div>
@@ -64,7 +79,6 @@
                                     <option value="3">南京冷库</option>
           </select>
         </label>
-        	
       </div>
       <div class="padding">
       <input type="submit" class="button button-block button-positive" value="预约"/>
