@@ -16,7 +16,7 @@
 <ion-view title="Home" hide-nav-bar="true">
       <ion-scroll zooming="true" direction="xy" style="width: 500px; height: 500px">
 		<div class="bar bar-header bar-positive">
-			<a class="button icon-right ion-chevron-left button-positive" href="javascript :;" onClick="javascript :history.back(-1);"></a>
+			<a class="button icon-right ion-chevron-left button-positive" href="../weindex"></a>
 			<h1 class="title">${warehouse.name}</h1>
 		</div>
 		<div class="item item-image">
