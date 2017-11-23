@@ -15,7 +15,7 @@ public class Order{
 	private Date createtime;
 	@Column(name = "visitName")
 	private String visitName;
-	@Column(name="name")
+	@Column(name = "name")
 	private String name;
 	@Column(name = "phone")
 	private String phone;

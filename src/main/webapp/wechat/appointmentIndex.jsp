@@ -25,7 +25,7 @@
     
     
     <body>
-    <form class="registerform" action="order/appoint">
+    <form  action="appoint" method="post">
     <div class="bar bar-header">
       <div class="h1 title">预约登记</div>
     </div>
@@ -74,19 +74,13 @@
   
   <script>
   		
-/* $(".registerform").Validform(
+ $(".registerform").Validform(
 		{
 			datatype : {
 				"zh1-6" : /^[\u4E00-\u9FA5\uf900-\ufa2d]{1,6}$/
 			},
 			tiptype : 2,
 			callback : function(form) {
-				if ($("input[name='file']").val() == null
-						|| $("input[name='file']").val() == "") {
-					alert("请上传证件图片！");
-					return false;
-
-				}
 				var check = confirm("您确定要提交表单吗？");
 				if (check) {
 					form[0].submit();
@@ -96,7 +90,7 @@
 			}
 		}
 		
-		); */
+		); 
   	
   </script>
 </html>
