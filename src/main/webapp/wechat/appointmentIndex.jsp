@@ -5,7 +5,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-        <title>郑明-预约参观</title>
+        <title>郑明 - 预约参观</title>
         <script type="text/javascript" src="http://validform.rjboy.cn/wp-content/themes/validform/js/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" src="http://validform.rjboy.cn/Validform/v5.1/Validform_v5.1_min.js"></script>
         <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
@@ -26,7 +26,7 @@
     
     <body>
 
-    <form  action="appoint">
+    <form  action="appoint" method="post">
 
     <div class="bar bar-header">
       <div class="h1 title">预约登记</div>

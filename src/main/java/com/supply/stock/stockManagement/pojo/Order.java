@@ -6,6 +6,8 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Table(name="stock_order")
 public class Order{
 	
@@ -13,6 +15,10 @@ public class Order{
 	private Integer id;
 	@Column(name = "createtime")
 	private Date createtime;
+	
+	
+	
+	
 	@Column(name = "visitName")
 	private String visitName;
 	@Column(name = "name")
@@ -27,6 +33,7 @@ public class Order{
 	private Integer wareHouseid;
 	
 	@Column(name="visitTime")
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date visitTime;
 
 	public String getVisitName() {
@@ -60,7 +67,7 @@ public class Order{
 	public void setWareHouseid(Integer wareHouseid) {
 		this.wareHouseid = wareHouseid;
 	}
-
+	 
 	public Date getVisitTime() {
 		return visitTime;
 	}

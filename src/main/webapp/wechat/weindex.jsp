@@ -7,7 +7,7 @@
 
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<title>安博 - 仓库查询</title>
+<title>郑明 - 仓库查询</title>
 
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/static/css/common.css">
