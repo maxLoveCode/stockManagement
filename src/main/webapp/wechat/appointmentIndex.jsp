@@ -26,7 +26,7 @@
     
     <body>
 
-    <form class="registerform" action="appoint">
+    <form  action="appoint">
 
     <div class="bar bar-header">
       <div class="h1 title">预约登记</div>
@@ -76,7 +76,7 @@
   
   <script>
   		
- $(".registerform").Validform(
+/*  $(".registerform").Validform(
 		{
 			datatype : {
 				"zh1-6" : /^[\u4E00-\u9FA5\uf900-\ufa2d]{1,6}$/
@@ -93,6 +93,6 @@
 		}
 		
 		); 
-  	
+  	 */
   </script>
 </html>
