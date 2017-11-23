@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -41,7 +42,9 @@ public class WarehouseController extends BaseController {
 	}
 	
 	@RequestMapping(value = "/detailView+{id}", method = RequestMethod.GET)
-	public String detailView(@PathVariable("id") Integer id) {
+	public String detailView(@PathVariable("id") Integer id, HttpSession session) {
+		Warehouse warehouse = warehouseService.selectByPrimaryKey(id);
+		session.setAttribute("warehouse", warehouse);
 		return "wechat/detailView";
 	}
 	

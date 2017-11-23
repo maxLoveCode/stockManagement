@@ -25,12 +25,11 @@
 			}
 		</style>
 	</head>
-465064342346
 	<body>
 
 		<div class="bar bar-header bar-positive">
 			<a class="button icon-right ion-chevron-left button-positive"></a>
-			<h1 class="title">郑明上海桃浦冷库</h1>
+			<h1 class="title">${warehouse.name}</h1>
 		</div>
 		<div class="item item-image">
 			<img src="img/1.png">
