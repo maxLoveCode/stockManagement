@@ -15,9 +15,13 @@ public class SessionInterceptor implements HandlerInterceptor {
 			throws Exception {
 		if (!StringUtils.isEmpty(request.getSession().getAttribute(BaseController.SESSION_ID))) {
 			return true;
-		} else {
+		} else if (request.getRequestURL().toString().equals("http://localhost:8080/stockManagement/weindex")){
+			System.out.println(request.getRequestURL());
+			return true;
+		}else {
 			response.sendRedirect(request.getContextPath() + "/login");
-			System.out.println("======REDIRECT======");
+			
+			System.out.println(request.getSession().getAttribute(BaseController.SESSION_ID));
 			return false;
 		}
 	}

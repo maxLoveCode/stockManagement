@@ -25,7 +25,9 @@
     
     
     <body>
-    <form  action="appoint" method="post">
+
+    <form class="registerform" action="appoint">
+
     <div class="bar bar-header">
       <div class="h1 title">预约登记</div>
     </div>

@@ -59,10 +59,11 @@
 				
 			</div>
 					     </ion-scroll>
-    </ion-view>
 		<div class="bar bar-footer bar-positive">
-			<div class="title">预约参观</div>
+			 <a href="${pageContext.request.contextPath}/order/appointmentIndex"><div class="title">预约参观</div></a>
 		</div>
+		
+    </ion-view>
 	</body>
 
 </html>
