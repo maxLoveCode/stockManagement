@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <html ng-app="ionicApp">
-
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
@@ -13,12 +12,12 @@
         </script>
 	</head>
 	<body>
-<ion-view title="Home" hide-nav-bar="true">
-      <ion-scroll zooming="true" direction="xy" style="width: 500px; height: 500px">
-		<div class="bar bar-header bar-positive">
+	<div class="bar bar-header bar-positive">
 			<a class="button icon-right ion-chevron-left button-positive" href="../weindex"></a>
 			<h1 class="title">${warehouse.name}</h1>
 		</div>
+	<ion-view title="Home" hide-nav-bar="true">
+      <ion-scroll zooming="true" direction="xy" style="width: 500px; height: 500px">
 		<div class="item item-image">
 			<img src="${warehouse.frontPage}">
 		</div>
@@ -52,18 +51,24 @@
 						</div>
 						${warehouse.contact}
 					</div>
-				<div>
+					
+					
+					
+					<div class="item item-input ">
+						
 						${warehouse.article}
-				</div>
-
-				
+					</div>
+					<div class="item item-input ">
+						
+						<br><br>
+					</div>
 			</div>
-					     </ion-scroll>
-		<div class="bar bar-footer bar-positive">
+      		</ion-scroll>
+    </ion-view>
+    	<div class="bar bar-footer bar-positive">
 			 <a href="${pageContext.request.contextPath}/order/appointmentIndex"><div class="title">预约参观</div></a>
 		</div>
 		
-    </ion-view>
 	</body>
-
+	
 </html>
