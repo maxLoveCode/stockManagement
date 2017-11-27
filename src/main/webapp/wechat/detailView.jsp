@@ -19,7 +19,7 @@
 	<ion-view title="Home" hide-nav-bar="true">
       <ion-scroll zooming="true"  style="height: 500px">
 		<div class="item item-image">
-			<img src="${warehouse.frontPage}">
+			<img src="${warehouse.frontPage}" style="margin-top: 45px">
 		</div>
 
 				<div class="list">

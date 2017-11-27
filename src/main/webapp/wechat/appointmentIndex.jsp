@@ -95,6 +95,7 @@
 			callback : function(form) {
 				var check = confirm("您确定要提交预约吗？");
 				if (check) {
+					alert("您的预约已成功提交，我们客服会在3个工作日内联系您");
 					form[0].submit();
 				}
 				return false;
