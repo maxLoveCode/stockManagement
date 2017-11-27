@@ -130,4 +130,13 @@ public class IndexController extends BaseController {
 		session.setAttribute(WEBSOCKET_USERNAME, "wechat");
 		return "wechat/weindex";
 	}
+	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public void reindex(HttpServletResponse response) {
+		try {
+			response.sendRedirect("/stockManagement/weindex");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 }

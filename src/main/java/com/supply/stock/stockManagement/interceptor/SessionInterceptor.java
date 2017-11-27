@@ -16,7 +16,8 @@ public class SessionInterceptor implements HandlerInterceptor {
 		if (!StringUtils.isEmpty(request.getSession().getAttribute(BaseController.SESSION_ID))) {
 			return true;
 		} else if (request.getRequestURI().toString().equals("/stockManagement/weindex")
-				||request.getRequestURI().toString().equals("/error")){
+				||request.getRequestURI().toString().equals("/error")
+				||request.getRequestURI().toString().equals("/stockManagement/")){
 			System.out.println(request.getRequestURI());
 			return true;
 		}else {
