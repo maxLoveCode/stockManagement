@@ -14,7 +14,7 @@
         <script src="/bower/bootstrap-datepicker-mobile/bootstrap-datepicker-mobile.js"></script>
 		<style>
 		.input-label{
-				color: blue;
+				color: #000066;
 				font-weight:bold ;
 			}
 		</style>
@@ -25,7 +25,7 @@
     
     <body>
 
-    <form  id = "form" action="appoint" method="get">
+    <form class="registerform" id = "form" action="appoint" method="get">
 
     <div class="bar bar-header">
       <div class="h1 title">预约登记</div>
@@ -48,8 +48,7 @@
         <label class="item item-input">
           <span class="input-label">参观时间</span>
           
-          <input type="text" class="date-picker form-control" data-date-start-view="decade" data-date-format="mm/dd/yy" data-date="02/01/99" value="02/01/99" name="birthday" placeholder="MM/DD/YY" />
-
+         <input type="date" datatype="date" nullmsg="请输入出生日期！" class="date-picker form-control" data-date-start-view="decade" data-date-format="mm/dd/yy" data-date="02/01/99" value="02/01/99" name="visitTime" placeholder="MM/DD/YY" />
   <div class="form-group">
     <div class="input-group">
 
@@ -60,22 +59,19 @@
     </div>
   </div>
         </label>
-        <div class="bar">
-      <div class="h1 title">选择仓库</div>
-    </div>
-    <div class="content has-header">
       <div class="list">
         <label class="item item-input">
           <span class="input-label">仓库</span><select class="button button-defut " style="width: 200px;" name="wareHouseid"
 						datatype="*" nullmsg="请选择！">
-          	<option value="1">上海桃浦冷库</option>
-                                    <option value="2">上海沅江库</option>
-                                    <option value="3">南京冷库</option>
+			<c:forEach items="${warehouses }" var="bean">
+			<option value="${bean.id }">${bean.name }</option>
+			</c:forEach>
+          	
+                                  
           </select>
         </label>
-      </div>
       <div class="padding">
-      <input type="submit" class="button button-block button-positive" value="预约"/>
+      <input type="submit" class="button button-block button-positive" style="background-color: #000099;" value="预约"/>
       
       </div>
     </div>
@@ -83,13 +79,39 @@
   </body>
   
   <script>
-  		
-$("#form").submit(function(event) {
+  $(function(){
+		//$(".registerform").Validform();  //就这一行代码！;
+	  $.Tipmsg.r=null;
+		
+		var showmsg=function(msg){//假定你的信息提示方法为showmsg， 在方法里可以接收参数msg，当然也可以接收到o及cssctl;
+			alert(msg);
+		}
+
+		$(".registerform").Validform({
+			tiptype:function(msg){
+				showmsg(msg);
+			},
+			tipSweep:true,
+			callback : function(form) {
+				var check = confirm("您确定要提交预约吗？");
+				if (check) {
+					form[0].submit();
+				}
+				return false;
+			}
+		});
+		$.extend($.Datatype,{
+			"date":	/^(\d{4})-(\d{2})-(\d{2})$/
+	});
+	})
+	
+/* $("#form").submit(function(event) {
     $.get($(this).attr("action"), { serial: $("#serial").val() })
     .done(function(data) {
 		alert("操作成功");
     });
-});
+}); */
 		
   </script>
+  
 </html>

@@ -12,12 +12,12 @@
         </script>
 	</head>
 	<body>
-	<div class="bar bar-header bar-positive">
-			<a class="button icon-right ion-chevron-left button-positive" href="../weindex"></a>
+	<div  style="background-color: #000099;" class="bar bar-header bar-positive">
+			<a class="button icon-right ion-chevron-left button-positive " style="background-color: #000099;" href="../weindex"></a>
 			<h1 class="title">${warehouse.name}</h1>
 		</div>
 	<ion-view title="Home" hide-nav-bar="true">
-      <ion-scroll zooming="true" direction="xy" style="width: 500px; height: 500px">
+      <ion-scroll zooming="true"  style="height: 500px">
 		<div class="item item-image">
 			<img src="${warehouse.frontPage}">
 		</div>
@@ -62,11 +62,12 @@
 						
 						<br><br>
 					</div>
-			</div>
+			</div> 
       		</ion-scroll>
     </ion-view>
-    	<div class="bar bar-footer bar-positive">
-			 <a href="${pageContext.request.contextPath}/order/appointmentIndex"><div class="title">预约参观</div></a>
+    
+    	<div class="bar bar-footer bar-positive tabs" style="background-color: #000099;">
+			 <a href="${pageContext.request.contextPath}/order/appointmentIndex"><div  class="title">预约参观</div></a>
 		</div>
 		
 	</body>

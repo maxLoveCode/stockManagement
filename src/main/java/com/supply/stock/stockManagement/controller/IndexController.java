@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.TreeSet;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,9 +12,11 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.supply.stock.stockManagement.pojo.User;
 import com.supply.stock.stockManagement.pojo.Warehouse;
@@ -122,12 +125,23 @@ public class IndexController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = "/weindex", method = RequestMethod.GET)
-	public String weindex(HttpSession session) {
-		List<Warehouse> indexList = warehouseService.select(new Warehouse());
+	public String weindex(HttpSession session,Warehouse warehouse) {
+		List<Warehouse> indexList = warehouseService.WarehouseList(warehouse);
+		TreeSet<String> city =new TreeSet<String>();
+		TreeSet<String> district =new TreeSet<String>();
+		for (Warehouse warehouses : indexList) {
+			if(null!=warehouses.getCity()&& null!=warehouses.getDistrict()) {
+			city.add(warehouses.getCity());
+			district.add(warehouses.getDistrict());
+			}
+		}
 		System.out.println(indexList);
-		session.setAttribute("list", indexList);session.setAttribute(SESSION_ID, session.getId());
+		session.setAttribute("list", indexList);
+		session.setAttribute(SESSION_ID, session.getId());
 		session.setAttribute(SESSION_NAME, "wechat");
 		session.setAttribute(WEBSOCKET_USERNAME, "wechat");
+		session.setAttribute("city", city);
+		session.setAttribute("district",district);
 		return "wechat/weindex";
 	}
 	
@@ -139,4 +153,18 @@ public class IndexController extends BaseController {
 			e.printStackTrace();
 		}
 	}
+	
+	/**
+	 * 
+	 * ajax显示
+	 * 
+	 */
+	@ResponseBody
+	@RequestMapping(value = "/ajaxwarehouse", method = RequestMethod.GET)
+	public List<Warehouse> ajaxwarehouse(Warehouse warehouse) {
+	List<Warehouse> list=warehouseService.WarehouseList(warehouse);
+	System.out.println("aaaaa");
+		return list;
+	}
+	
 }
