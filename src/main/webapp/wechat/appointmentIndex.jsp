@@ -14,7 +14,7 @@
         <script src="/bower/bootstrap-datepicker-mobile/bootstrap-datepicker-mobile.js"></script>
 		<style>
 		.input-label{
-				color: #000066;
+				color: #2a3380;
 				font-weight:bold ;
 			}
 		</style>
@@ -71,7 +71,7 @@
           </select>
         </label>
       <div class="padding">
-      <input type="submit" class="button button-block button-positive" style="background-color: #000099;" value="预约"/>
+      <input type="submit" class="button button-block button-positive" style="background-color:#2a3380 " value="预约"/>
       
       </div>
     </div>
@@ -95,6 +95,7 @@
 			callback : function(form) {
 				var check = confirm("您确定要提交预约吗？");
 				if (check) {
+					alert("您的预约已成功提交，我们客服会在3个工作日内联系您");
 					form[0].submit();
 				}
 				return false;
