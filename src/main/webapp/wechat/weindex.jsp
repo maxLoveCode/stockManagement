@@ -45,7 +45,7 @@
 	body{ background:#f3f3f3;}
 </style>
 <div class="wrapper">
-	<img src="${pageContext.request.contextPath}/static/images/banner1.png" class="dsb">
+	<img style="width:100%" src="${pageContext.request.contextPath}/static/images/banner1.png" class="dsb">
 
     <div class="selectLine">
         <select name="district" id="district" >

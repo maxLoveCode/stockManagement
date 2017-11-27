@@ -145,6 +145,15 @@ public class IndexController extends BaseController {
 		return "wechat/weindex";
 	}
 	
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public void reindex(HttpServletResponse response) {
+		try {
+			response.sendRedirect("/stockManagement/weindex");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	/**
 	 * 
 	 * ajax显示
@@ -157,6 +166,5 @@ public class IndexController extends BaseController {
 	System.out.println("aaaaa");
 		return list;
 	}
-	
 	
 }
