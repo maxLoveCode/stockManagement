@@ -11,7 +11,6 @@
         <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
         <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css" />
-        <script src="/bower/bootstrap-datepicker-mobile/bootstrap-datepicker-mobile.js"></script>
 		<style>
 		.input-label{
 				color: #2a3380;
@@ -25,7 +24,7 @@
     
     <body>
 
-    <form class="registerform" id = "form" action="appoint" method="get">
+    <form class="registerform" id = "form" action="appoint" method="get" data-ajax="false">
 
     <div class="bar bar-header">
       <div class="h1 title">预约登记</div>
@@ -35,20 +34,20 @@
       <div class="list">
         <label class="item item-input">
           <span class="input-label">姓名</span>
-          <input type="text" name="visitName" nullmsg="请输入姓名！" datatype="s2-5" errormsg="姓名至少2个字符,最多5个字符！">
+          <input type="text" name="visitName" id="visitName" nullmsg="请输入姓名！" datatype="s2-5" errormsg="姓名至少2个字符,最多5个字符！">
         </label>
         <label class="item item-input">
           <span class="input-label">联系电话</span>
-          <input type="text" name="phone" datatype="m" nullmsg="请输入手机号码！" errormsg="手机号码不正确！">
+          <input type="text" name="phone" datatype="m" id="phone" nullmsg="请输入手机号码！" errormsg="手机号码不正确！">
         </label>
         <label class="item item-input">
           <span class="input-label">公司名称</span>
-          <input type="text"name="company" datatype="s2-16" nullmsg="请输入公司名称！">
+          <input type="text"name="company" datatype="s2-16" id="company" nullmsg="请输入公司名称！" errormsg="公司名称最少为2个字符！">
         </label>
         <label class="item item-input">
           <span class="input-label">参观时间</span>
           
-         <input type="date" datatype="date" nullmsg="请输入出生日期！" class="date-picker form-control" data-date-start-view="decade" data-date-format="mm/dd/yy" data-date="02/01/99" value="02/01/99" name="visitTime" placeholder="MM/DD/YY" />
+         <input type="date" datatype="date" nullmsg="请输入出生日期！" id="visitTime" class="date-picker form-control" data-date-start-view="decade"  name="visitTime"  />
   <div class="form-group">
     <div class="input-group">
 
@@ -71,7 +70,7 @@
           </select>
         </label>
       <div class="padding">
-      <input type="submit" class="button button-block button-positive" style="background-color:#2a3380 " value="预约"/>
+      <input type="submit"   class="button button-block button-positive" style="background-color:#2a3380 " value="预约"/>
       
       </div>
     </div>
@@ -93,25 +92,21 @@
 			},
 			tipSweep:true,
 			callback : function(form) {
-				var check = confirm("您确定要提交预约吗？");
+				var check = confirm("您确定要预约吗？");
 				if (check) {
 					alert("您的预约已成功提交，我们客服会在3个工作日内联系您");
 					form[0].submit();
-				}
+				} 
+				alert("预约失败");
 				return false;
-			}
+				
+			}, 
 		});
 		$.extend($.Datatype,{
 			"date":	/^(\d{4})-(\d{2})-(\d{2})$/
 	});
 	})
 	
-/* $("#form").submit(function(event) {
-    $.get($(this).attr("action"), { serial: $("#serial").val() })
-    .done(function(data) {
-		alert("操作成功");
-    });
-}); */
 		
   </script>
   

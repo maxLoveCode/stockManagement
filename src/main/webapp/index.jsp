@@ -69,7 +69,7 @@
 								"url" : "${pageContext.request.contextPath}"
 										+ "/warehouse/index"
 							},{
-								"menuname" : "订单管理",
+								"menuname" : "预约管理",
 								"icon" : "icon-nav",
 								"url" : "${pageContext.request.contextPath}"
 										+ "/order/index"
