@@ -320,6 +320,7 @@
 </html>
 <script type="text/javascript"
 	src="${pageContext.request.contextPath}/static/js/sockjs-0.3.4.min.js"></script>
+	
 <script>
 	var websocket;
 	if ('WebSocket' in window) {

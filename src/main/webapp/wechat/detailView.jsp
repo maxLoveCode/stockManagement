@@ -17,7 +17,7 @@
 			<h1 class="title">${warehouse.name}</h1>
 		</div>
 	<ion-view title="Home" hide-nav-bar="true">
-      <ion-scroll zooming="true" direction="xy" style="width: 500px; height: 500px">
+      <ion-scroll zooming="true" direction="xy" style="height: 500px">
 		<div class="item item-image">
 			<img src="${warehouse.frontPage}">
 		</div>
@@ -62,10 +62,11 @@
 						
 						<br><br>
 					</div>
-			</div>
+			</div> 
       		</ion-scroll>
     </ion-view>
-    	<div class="bar bar-footer bar-positive">
+    
+    	<div class="bar bar-footer bar-positive tabs">
 			 <a href="${pageContext.request.contextPath}/order/appointmentIndex"><div class="title">预约参观</div></a>
 		</div>
 		

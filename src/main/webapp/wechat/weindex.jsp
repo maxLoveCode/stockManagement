@@ -37,29 +37,31 @@
          } else {
                    document.write('<meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">');
          }
-</script><meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi">
+</script><meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi"> 
 <!--移动端版本兼容 end -->
 </head>
 <body data-gr-c-s-loaded="true">
 <style>
-body{ background:#f3f3f3;}
+	body{ background:#f3f3f3;}
 </style>
 <div class="wrapper">
 	<img src="./安博 - 仓库查询_files/topBar.jpg" class="dsb">
     
     <img src="./安博 - 仓库查询_files/loftImg1.jpg" class="dsb">  
     <div class="selectLine">
-        <select name="district" id="district">
-            <option value="">选择区域</option>
-            <option value="华东">华东</option>
-            <option value="华北">华北</option>
-            <option value="华南">华南</option>
-            <option value="华西">华西</option>
+        <select name="district" id="district" >
+          <option value="">选择区域</option>
+        <c:forEach var="bean" items="${district }">
+            <option value="${bean }">${bean }</option>
+            </c:forEach>
         </select>
     </div>
     <div class="selectLine">
         <select name="city" id="city">
-            <option value="">请先选择区域</option>
+         <option value="">选择城市</option>
+        <c:forEach items="${city }" var="bean">
+            <option value="${bean }">${bean }</option>
+            </c:forEach>
         </select>
     </div>
     <div class="selectLine">
@@ -94,7 +96,7 @@ body{ background:#f3f3f3;}
 	</div>
 	    <script type="text/javascript">
     
-    function selectStorage()
+     function selectStorage()
     {
         var district = $('#district').val();
         var city = $('#city').val();
@@ -156,7 +158,7 @@ body{ background:#f3f3f3;}
     $('#district,#city,#area').change(function(){
         selectStorage();
     });
-    })
+    }) */
     </script>
 
 
