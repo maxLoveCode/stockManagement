@@ -45,9 +45,8 @@
 	body{ background:#f3f3f3;}
 </style>
 <div class="wrapper">
-	<img src="./安博 - 仓库查询_files/topBar.jpg" class="dsb">
-    
-    <img src="./安博 - 仓库查询_files/loftImg1.jpg" class="dsb">  
+	<img src="${pageContext.request.contextPath}/static/images/banner1.png" class="dsb">
+
     <div class="selectLine">
         <select name="district" id="district" >
           <option value="">选择区域</option>
