@@ -19,10 +19,11 @@ select,input,textarea{font-family:inherit; outline:none;}
 
 
 /*仓库查询*/
-.selectLine{ height:66px; width:605px; padding:0 0 0 35px; border-bottom:1px solid #dfdfdf; background:url(../images/icon1.png) 575px 10px no-repeat #FFF;}
-.selectLine select{ background:none; border:none; display:block; width:605px; height:66px; line-height:66px; color:#828282; font-size:28px; -webkit-appearance:none; appearance:none;}
-.loftLine{ border-bottom:1px solid #dfdfdf; padding:10px; width:620px;}
-.loftLineImg{ float:left; width:180px; height:135px;}
+.selectLine{ height:55px; width:100%; background:#2a3380;}
+.selectLine select{ background:none; border:none; display:block; width:32%; height:66px; line-height:66px; font-weight: 150;
+color:#ffffff; padding-left:50px; display: inline-block; font-size:28px; -webkit-appearance:none; appearance:none;}
+.loftLine{ border-bottom:1px solid #dfdfdf;width:49%; display:inline-block;}
+.loftLineImg{ float:left; padding width:180px; height:135px;}
 .llRightInfo{ float:right; width:420px; padding:0 15px 0 0; color:#333; font-size:28px;}
 .llName{ width:418px; height:76px; line-height:38px; padding:0 0 5px 0; color:#333; font-size:28px; text-align:right; word-break:break-all; overflow:hidden;}
 .llBtns{ text-align:right; width:420px;}

@@ -48,22 +48,21 @@
 	<img style="width:100%" src="${pageContext.request.contextPath}/static/images/banner1.png" class="dsb">
 
     <div class="selectLine">
+    
         <select name="district" id="district" >
           <option value="">选择区域</option>
         <c:forEach var="bean" items="${district }">
             <option value="${bean }">${bean }</option>
             </c:forEach>
         </select>
-    </div>
-    <div class="selectLine">
+        
         <select name="city" id="city">
          <option value="">选择城市</option>
-        <c:forEach items="${city }" var="bean">
-            <option value="${bean }">${bean }</option>
+        <c:forEach items="${city}" var="bean">
+            <option value="${bean}">${bean }</option>
             </c:forEach>
         </select>
-    </div>
-    <div class="selectLine">
+        
         <select name="area" id="area">
             <option value="">仓库面积</option>
             <option value="0~30000">3万平米以内</option>
@@ -157,7 +156,7 @@
     $('#district,#city,#area').change(function(){
         selectStorage();
     });
-    }) */
+    }) 
     </script>
 
 
