@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html ng-app="ionicApp">
 	<head>
 		<meta charset="utf-8">
@@ -12,30 +13,26 @@
         </script>
 	</head>
 	<body>
-	<div  style="background-color: #2a3380;" class="bar bar-header bar-positive">
-			<a class="button icon-right ion-chevron-left button-positive " style="background-color: #2a3380;" href="../weindex"></a>
-			<h1 class="title">${warehouse.name}</h1>
-		</div>
 	<ion-view title="Home" hide-nav-bar="true">
       <ion-scroll zooming="true"  style="height: 500px">
 		<div class="item item-image">
-			<img src="${warehouse.frontPage}" style="margin-top: 45px">
+			<img src="${warehouse.frontPage}">
 		</div>
 
 				<div class="list">
 
 					<div class="item item-input">
 						<div class="input-label">
-							<b><span style="color:#2a3380">物业类型</span></b>
+							<b><span style="color:#2a3380">仓库名称</span></b>
 						</div>
-						单栋两层库
+						${warehouse.name}
 					</div>
 
 					<div class="item item-input">
 						<div class="input-label">
 							<b><span style="color:#2a3380">所在地址</span></b>
 						</div>
-						${warehouse.address} &nbsp;&nbsp;<a href=""><i class="ion ion-android-pin"></i></a>
+						${warehouse.address} &nbsp;&nbsp;<a href=""></a>
 					</div>
 
 					<div class="item item-input ">
@@ -51,17 +48,12 @@
 						</div>
 						${warehouse.contact}
 					</div>
-					
-					
-					
+					<c:if test="${warehouse.article!=null}">
 					<div class="item item-input ">
 						
 						${warehouse.article}
 					</div>
-					<div class="item item-input ">
-						
-						<br><br>
-					</div>
+					</c:if>
 			</div> 
       		</ion-scroll>
     </ion-view>
