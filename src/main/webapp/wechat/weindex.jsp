@@ -8,7 +8,10 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>郑明 - 仓库查询</title>
-
+	
+		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="${pageContext.request.contextPath}/static/css/common.css">
 <script type="text/javascript"
@@ -73,20 +76,17 @@
     </div>
     
     
-    <div class="loftList">
-    <c:forEach items="${list}" varStatus="i" var="item" >
-    
-        
-        <div class="loftLine" data-district="华东" data-city="上海" data-area="35000">
-            <img src="${item.frontPage}" class="loftLineImg">
+    <div class="loftList" align="center">
+    <c:forEach items="${list}" varStatus="i" var="item"  >
+        <div class="loftLine" data-district="华东"  style="background-color: #ffff;" data-city="上海" data-area="35000">
+           <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}">  <img src="${item.frontPage}"  class="loftLineImg" style="margin-left: 40px;margin-top: 15px;margin-right: 50px"></a>
             <div class="llRightInfo">
-                <div class="llName">${item.name}</div>
+                <div class="llName" style="margin-left: -90px" ><span style="font-size: 20px;" >${item.name}</span></div>
                 <div class="llBtns">
-                    <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}"><img src="${pageContext.request.contextPath}/static/images/btn2.png"></a>
-                    <a href="${pageContext.request.contextPath}/order/appointmentIndex"><img src="${pageContext.request.contextPath}/static/images/btn3.png"></a>
+                    <%-- <a href="${pageContext.request.contextPath}/order/appointmentIndex"><img src="${pageContext.request.contextPath}/static/images/btn3.png"></a> --%>
+                	<p align="center" ><a href="${pageContext.request.contextPath}/order/appointmentIndex"  class="btn btn-primary" role="button" style="margin-top: -30px;margin-left: 90px;background-color:#2a3380 " >预约参观</a><p>
                 </div>
             </div>
-            <div class="clear"></div>
         </div>
     </c:forEach>
 
