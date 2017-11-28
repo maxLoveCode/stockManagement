@@ -51,8 +51,8 @@
     
         <select name="district" id="district" >
           <option value="">选择区域</option>
-        <c:forEach var="bean" items="${district }">
-            <option value="${bean }">${bean }</option>
+        <c:forEach var="bean" items="${district}">
+            <option value="${bean }">${bean}</option>
             </c:forEach>
         </select>
         
