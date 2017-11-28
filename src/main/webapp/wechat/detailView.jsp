@@ -10,6 +10,8 @@
 		<script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
 		 <script type="text/javascript">
         angular.module('ionicApp', ['ionic']);
+        
+        
         </script>
 	</head>
 	<body>
@@ -39,14 +41,14 @@
 						<div class="input-label">
 							<b><span style="color:#2a3380">面积</span></b>
 						</div>
-						${warehouse.area}
+						${warehouse.area}&nbsp;&nbsp;平方米
 					</div>
 
 					<div class="item item-input ">
 						<div class="input-label">
 							<b><span style="color:#2a3380">  联系电话</span></b>
 						</div>
-						${warehouse.contact}
+						<span style="color:#2a3380">${warehouse.contact} </span>
 					</div>
 					<c:if test="${warehouse.article!=null}">
 					<div class="item item-input ">
