@@ -6,7 +6,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
         <title>郑明 - 预约参观</title>
-        <script type="text/javascript" src="http://validform.rjboy.cn/wp-content/themes/validform/js/jquery-1.6.2.min.js"></script>
+     <script type="text/javascript" src="http://validform.rjboy.cn/wp-content/themes/validform/js/jquery-1.6.2.min.js"></script>
 <script type="text/javascript" src="http://validform.rjboy.cn/Validform/v5.1/Validform_v5.1_min.js"></script>
         <link href="https://cdn.bootcss.com/ionic/1.3.2/css/ionic.css" rel="stylesheet">
         <script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
@@ -96,17 +96,15 @@
 				if (check) {
 					alert("您的预约已成功提交，我们客服会在3个工作日内联系您");
 					form[0].submit();
-				} 
-				alert("预约失败");
-				return false;
+				}
 				
 			}, 
-		});
+		}); 
 		$.extend($.Datatype,{
 			"date":	/^(\d{4})-(\d{2})-(\d{2})$/
 	});
 	})
-	
+	 
 		
   </script>
   
