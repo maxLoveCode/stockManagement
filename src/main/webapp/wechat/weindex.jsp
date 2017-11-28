@@ -44,9 +44,6 @@
 <!--移动端版本兼容 end -->
 </head>
 <body data-gr-c-s-loaded="true">
-<style>
-	body{ background:#f3f3f3;}
-</style>
 <div class="wrapper">
 	<img style="width:100%" src="${pageContext.request.contextPath}/static/images/banner1.png" class="dsb">
 
@@ -76,9 +73,10 @@
     </div>
     
     
-    <div class="loftList" align="center">
-    <c:forEach items="${list}" varStatus="i" var="item"  >
-        <div class="loftLine" data-district="华东"  style="background-color: #ffff;" data-city="上海" data-area="35000">
+    <div class="loftList">
+    	<c:forEach items="${list}" varStatus="i" var="item">
+    		<c:if test="${!(i.count%2 eq 0)}">
+        	<div class="loftLine-l" data-district="华东"  style="background-color: #ffff;" data-city="上海" data-area="35000">
            <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}">  <img src="${item.frontPage}"  class="loftLineImg" style="margin-left: 40px;margin-top: 15px;margin-right: 50px"></a>
             <div class="llRightInfo">
                 <div class="llName" style="margin-left: -90px" ><span style="font-size: 20px;" >${item.name}</span></div>
@@ -88,10 +86,21 @@
                 </div>
             </div>
         </div>
-    </c:forEach>
-
+        	</c:if><c:if test="${i.count%2 eq 0}">
+        	<div class="loftLine-r" data-district="华东"  style="background-color: #ffff;" data-city="上海" data-area="35000">
+           <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}">  <img src="${item.frontPage}"  class="loftLineImg" style="margin-left: 40px;margin-top: 15px;margin-right: 50px"></a>
+            <div class="llRightInfo">
+                <div class="llName" style="margin-left: -90px" ><span style="font-size: 20px;" >${item.name}</span></div>
+                <div class="llBtns">
+                    <%-- <a href="${pageContext.request.contextPath}/order/appointmentIndex"><img src="${pageContext.request.contextPath}/static/images/btn3.png"></a> --%>
+                	<p align="center" ><a href="${pageContext.request.contextPath}/order/appointmentIndex"  class="btn btn-primary" role="button" style="margin-top: -30px;margin-left: 90px;background-color:#2a3380 " >预约参观</a><p>
+                </div>
+            </div>
         </div>
-	</div>
+        	</c:if>
+	    </c:forEach>
+    </div>
+</div>
 	    <script type="text/javascript">
     
      function selectStorage()
