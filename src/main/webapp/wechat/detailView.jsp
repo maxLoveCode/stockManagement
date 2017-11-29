@@ -61,7 +61,7 @@
     </ion-view>
     
     	<div class="bar bar-footer bar-positive " style="background-color: #2a3380;">
-			 <a href="${pageContext.request.contextPath}/order/appointmentIndex"><div  class="title">预约参观</div></a>
+			 <a href="${pageContext.request.contextPath}/order/appointmentIndex?id=${warehouse.id}"><div  class="title">预约参观</div></a>
 		</div>
 		
 	</body>
