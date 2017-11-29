@@ -82,7 +82,7 @@
                 <div class="llName" style="margin-left: -90px" ><span style="font-size: 20px;" >${item.name}</span></div>
                 <div class="llBtns">
                     <%-- <a href="${pageContext.request.contextPath}/order/appointmentIndex"><img src="${pageContext.request.contextPath}/static/images/btn3.png"></a> --%>
-                	<p align="center" ><a href="${pageContext.request.contextPath}/order/appointmentIndex?id=${item.id}"  class="btn btn-primary" role="button" style="margin-top: -30px;margin-left: 90px;background-color:#2a3380 " >预约参观</a><p>
+                	<p align="center" ><a href="${pageContext.request.contextPath}/order/appointmentIndex?id=${item.id}"  class="btn btn-primary btn-lg" role="button" style="margin-top: -30px;margin-left: 90px;background-color:#2a3380 " >预约参观</a><p>
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@
                 <div class="llName" style="margin-left: -90px" ><span style="font-size: 20px;" >${item.name}</span></div>
                 <div class="llBtns">
                     <%-- <a href="${pageContext.request.contextPath}/order/appointmentIndex"><img src="${pageContext.request.contextPath}/static/images/btn3.png"></a> --%>
-                	<p align="center" ><a href="${pageContext.request.contextPath}/order/appointmentIndex?id=${item.id}"  class="btn btn-primary" role="button" style="margin-top: -30px;margin-left: 90px;background-color:#2a3380 " >预约参观</a><p>
+                	<p align="center" ><a href="${pageContext.request.contextPath}/order/appointmentIndex?id=${item.id}"  class="btn btn-primary btn-lg" role="button" style="margin-top: -30px;margin-left: 90px;background-color:#2a3380 " >预约参观</a><p>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
 			        			+"<div class=\"llRightInfo\">"
 			        			+"<div class=\"llName\" style=\"margin-left: -90px\" ><span style=\"font-size: 20px;\" >"+data[i].name+"</span></div>"
 			        			+"<div class=\"llBtns\">"
-			        			+"<p align=\"center\" ><a href=${pageContext.request.contextPath}/order/appointmentIndex?id="+data[i].id+" class=\"btn btn-primary\" role=\"button\" style=\"margin-top: -30px;margin-left: 90px;background-color:#2a3380 \" >预约参观</a><p>"
+			        			+"<p align=\"center\" ><a href=${pageContext.request.contextPath}/order/appointmentIndex?id="+data[i].id+" class=\"btn btn-primary btn-lg\" role=\"button\" style=\"margin-top: -30px;margin-left: 90px;background-color:#2a3380 \" >预约参观</a><p>"
 			        			+"</div></div></div>"
 	        			}else{
 	        				str+="<div class=\"loftLine-r\"   style=\"background-color: #ffff;\">"
@@ -127,7 +127,7 @@
 			        			+"<div class=\"llRightInfo\">"
 			        			+"<div class=\"llName\" style=\"margin-left: -90px\" ><span style=\"font-size: 20px;\" >"+data[i].name+"</span></div>"
 			        			+"<div class=\"llBtns\">"
-			        			+"<p align=\"center\" ><a href=${pageContext.request.contextPath}/order/appointmentIndex?id="+data[i].id+" class=\"btn btn-primary\" role=\"button\" style=\"margin-top: -30px;margin-left: 90px;background-color:#2a3380 \" >预约参观</a><p>"
+			        			+"<p align=\"center\" ><a href=${pageContext.request.contextPath}/order/appointmentIndex?id="+data[i].id+" class=\"btn btn-primary  btn-lg\" role=\"button\" style=\"margin-top: -30px;margin-left: 90px;background-color:#2a3380 \" >预约参观</a><p>"
 			        			+"</div></div></div>"
 	        			}
 	        			
