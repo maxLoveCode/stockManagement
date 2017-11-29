@@ -113,7 +113,7 @@
 	        		for( var i = 0; i < data.length; i++) {
 	        			if(i%2==0){
 	        				str+="<div class=\"loftLine-l\"   style=\"background-color: #ffff;\">"
-			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView"+data[i].id+"\">  <img src="+data[i].frontPage+"  class=\"loftLineImg\" style=\"margin-left: 40px;margin-top: 15px;margin-right: 50px\"></a>"
+			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"  class=\"loftLineImg\" style=\"margin-left: 40px;margin-top: 15px;margin-right: 50px\"></a>"
 			        			+"<div class=\"llRightInfo\">"
 			        			+"<div class=\"llName\" style=\"margin-left: -90px\" ><span style=\"font-size: 20px;\" >"+data[i].name+"</span></div>"
 			        			+"<div class=\"llBtns\">"
@@ -121,7 +121,7 @@
 			        			+"</div></div></div>"
 	        			}else{
 	        				str+="<div class=\"loftLine-r\"   style=\"background-color: #ffff;\">"
-			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView"+data[i].id+"\">  <img src="+data[i].frontPage+"  class=\"loftLineImg\" style=\"margin-left: 40px;margin-top: 15px;margin-right: 50px\"></a>"
+			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"  class=\"loftLineImg\" style=\"margin-left: 40px;margin-top: 15px;margin-right: 50px\"></a>"
 			        			+"<div class=\"llRightInfo\">"
 			        			+"<div class=\"llName\" style=\"margin-left: -90px\" ><span style=\"font-size: 20px;\" >"+data[i].name+"</span></div>"
 			        			+"<div class=\"llBtns\">"
