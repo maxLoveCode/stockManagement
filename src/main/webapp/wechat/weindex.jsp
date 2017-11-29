@@ -73,16 +73,16 @@
     </div>
     
     
-    <div class="loftList">
+    <div class="loftList" id="myList">
     	<c:forEach items="${list}" varStatus="i" var="item">
     		<c:if test="${!(i.count%2 eq 0)}">
-        	<div class="loftLine-l" data-district="华东"  style="background-color: #ffff;" data-city="上海" data-area="35000">
+        	<div class="loftLine-l"   style="background-color: #ffff;">
            <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}">  <img src="${item.frontPage}"  class="loftLineImg" style="margin-left: 40px;margin-top: 15px;margin-right: 50px"></a>
             <div class="llRightInfo">
                 <div class="llName" style="margin-left: -90px" ><span style="font-size: 20px;" >${item.name}</span></div>
                 <div class="llBtns">
                     <%-- <a href="${pageContext.request.contextPath}/order/appointmentIndex"><img src="${pageContext.request.contextPath}/static/images/btn3.png"></a> --%>
-                	<p align="center" ><a href="${pageContext.request.contextPath}/order/appointmentIndex"  class="btn btn-primary" role="button" style="margin-top: -30px;margin-left: 90px;background-color:#2a3380 " >预约参观</a><p>
+                	<p align="center" ><a href="${pageContext.request.contextPath}/order/appointmentIndex?id=${item.id}"  class="btn btn-primary" role="button" style="margin-top: -30px;margin-left: 90px;background-color:#2a3380 " >预约参观</a><p>
                 </div>
             </div>
         </div>
@@ -93,7 +93,7 @@
                 <div class="llName" style="margin-left: -90px" ><span style="font-size: 20px;" >${item.name}</span></div>
                 <div class="llBtns">
                     <%-- <a href="${pageContext.request.contextPath}/order/appointmentIndex"><img src="${pageContext.request.contextPath}/static/images/btn3.png"></a> --%>
-                	<p align="center" ><a href="${pageContext.request.contextPath}/order/appointmentIndex"  class="btn btn-primary" role="button" style="margin-top: -30px;margin-left: 90px;background-color:#2a3380 " >预约参观</a><p>
+                	<p align="center" ><a href="${pageContext.request.contextPath}/order/appointmentIndex?id=${item.id}"  class="btn btn-primary" role="button" style="margin-top: -30px;margin-left: 90px;background-color:#2a3380 " >预约参观</a><p>
                 </div>
             </div>
         </div>
@@ -102,7 +102,43 @@
     </div>
 </div>
 	    <script type="text/javascript">
-    
+	    $('#district,#city,#area').change(function(){
+	    	 var district = $('#district').val();
+	         var city = $('#city').val();
+	         var area = $('#area').val();
+	         $.ajax({
+	        	 type:"GET",
+	        	 url:"ajaxwarehouse?city="+city+"&district="+district,
+	        	dataType :"JSON",
+	        	success : function(data){
+	        		var	str="";
+	        		for( var i = 0; i < data.length; i++) {
+	        			if(i%2==0){
+	        				str+="<div class=\"loftLine-l\"   style=\"background-color: #ffff;\">"
+			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView"+data[i].id+"\">  <img src="+data[i].frontPage+"  class=\"loftLineImg\" style=\"margin-left: 40px;margin-top: 15px;margin-right: 50px\"></a>"
+			        			+"<div class=\"llRightInfo\">"
+			        			+"<div class=\"llName\" style=\"margin-left: -90px\" ><span style=\"font-size: 20px;\" >"+data[i].name+"</span></div>"
+			        			+"<div class=\"llBtns\">"
+			        			+"<p align=\"center\" ><a href=${pageContext.request.contextPath}/order/appointmentIndex?id="+data[i].id+" class=\"btn btn-primary\" role=\"button\" style=\"margin-top: -30px;margin-left: 90px;background-color:#2a3380 \" >预约参观</a><p>"
+			        			+"</div></div></div>"
+	        			}else{
+	        				str+="<div class=\"loftLine-r\"   style=\"background-color: #ffff;\">"
+			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView"+data[i].id+"\">  <img src="+data[i].frontPage+"  class=\"loftLineImg\" style=\"margin-left: 40px;margin-top: 15px;margin-right: 50px\"></a>"
+			        			+"<div class=\"llRightInfo\">"
+			        			+"<div class=\"llName\" style=\"margin-left: -90px\" ><span style=\"font-size: 20px;\" >"+data[i].name+"</span></div>"
+			        			+"<div class=\"llBtns\">"
+			        			+"<p align=\"center\" ><a href=${pageContext.request.contextPath}/order/appointmentIndex?id="+data[i].id+" class=\"btn btn-primary\" role=\"button\" style=\"margin-top: -30px;margin-left: 90px;background-color:#2a3380 \" >预约参观</a><p>"
+			        			+"</div></div></div>"
+	        			}
+	        			
+	        		}
+
+	        		$("#myList").html(str);
+	        	}
+	         
+	    });
+	    }); 
+    /* 
      function selectStorage()
     {
         var district = $('#district').val();
@@ -165,7 +201,7 @@
     $('#district,#city,#area').change(function(){
         selectStorage();
     });
-    }) 
+    })  */
     </script>
 
 

@@ -58,9 +58,10 @@ public class OrderController extends BaseController{
 	}
 	
 	@RequestMapping(value = "appointmentIndex", method = RequestMethod.GET)
-	public String appointmentIndex(ModelMap map) {
+	public String appointmentIndex(ModelMap map,Warehouse warehouse) {
 		List<Warehouse> warehouses=warehouseService.select(new Warehouse());
 		map.addAttribute("warehouses", warehouses);
+		map.addAttribute("warehouse", warehouse);
 		return "wechat/appointmentIndex";
 	}
 }

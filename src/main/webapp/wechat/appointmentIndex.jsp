@@ -63,7 +63,8 @@
           <span class="input-label">仓库</span><select class="button button-defut " style="width: 200px;" name="wareHouseid"
 						datatype="*" nullmsg="请选择！">
 			<c:forEach items="${warehouses }" var="bean">
-			<option value="${bean.id }">${bean.name }</option>
+			
+			<option value="${bean.id }" <c:if test="${bean.id==warehouse.id }">selected="selected" </c:if> >${bean.name }</option>
 			</c:forEach>
           	
                                   
