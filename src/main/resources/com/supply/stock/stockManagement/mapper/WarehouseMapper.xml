@@ -9,13 +9,13 @@
 	    stock_warehouse
 	   <where>
 	   
-	   <if test="district!=null">
+	   <if test="district!=null and district !=''">
 	   	And district=#{district}
 	   </if>
-	   <if test="city!=null">
+	   <if test="city!=null and city !=''">
 	   And city=#{city}
 	   </if>
-	   <if test="area!=null">
+	   <if test="area!=null and area !=''">
 	   and area=#{area}
 	   </if>
 	   </where>
