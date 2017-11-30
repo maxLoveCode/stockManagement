@@ -76,8 +76,8 @@
     <div class="loftList" id="myList">
     	<c:forEach items="${list}" varStatus="i" var="item">
     		<c:if test="${!(i.count%2 eq 0)}">
-        	<div class="loftLine-l"   style="background-color: #ffff;">
-               <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}">  <img src="${item.frontPage}"  class="loftLineImg"></a>
+        	<div class="loftLine-l"   style="background-color: #ffff;" data-area="${item.area}">
+               <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}">  <img src="${item.frontPage}?imageView2/1/w/200/h/200/format/jpg/q/100|imageslim"  class="loftLineImg"></a>
             <div class="llRightInfo">
                 <div class="llName"><span>${item.name}</span></div>
                 <div class="llBtns">
@@ -86,8 +86,8 @@
             </div>
         </div>
         </c:if><c:if test="${i.count%2 eq 0}">
-        	<div class="loftLine-r" data-district="华东"  style="background-color: #ffff;" data-city="上海" data-area="35000">
-           <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}">  <img src="${item.frontPage}"  class="loftLineImg"></a>
+        	<div class="loftLine-r" data-district="华东"  style="background-color: #ffff;" data-city="上海" data-area="${item.area}">
+           <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}">  <img src="${item.frontPage}?imageView2/1/w/200/h/200/format/jpg/q/100|imageslim"  class="loftLineImg"></a>
             <div class="llRightInfo">
                 <div class="llName"><span>${item.name}</span></div>
                 <div class="llBtns">
@@ -103,29 +103,36 @@
 	    $('#district,#city,#area').change(function(){
 	    	 var district = $('#district').val();
 	         var city = $('#city').val();
-	         var area = $('#area').val();
+	         var arear = $('#area').val();
+	         var area =0 ;
+	         var contact =0;
+	         if( arear != '' ){
+	                var a = arear.split('~');
+	                area = parseInt(a[0]) ;
+	                contact = parseInt(a[1]);
+	         }
 	         $.ajax({
 	        	 type:"GET",
-	        	 url:"ajaxwarehouse?city="+city+"&district="+district,
+	        	 url:"ajaxwarehouse?city="+city+"&district="+district+"&area="+area+"&contact="+contact,
 	        	dataType :"JSON",
 	        	success : function(data){
 	        		var	str="";
 	        		for( var i = 0; i < data.length; i++) {
 	        			if(i%2==0){
 	        				str+="<div class=\"loftLine-l\"   style=\"background-color: #ffff;\">"
-			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"  class=\"loftLineImg\" style=\"margin-left: 40px;margin-top: 15px;margin-right: 50px\"></a>"
+			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"  class=\"loftLineImg\" ></a>"
 			        			+"<div class=\"llRightInfo\">"
-			        			+"<div class=\"llName\" style=\"margin-left: -90px\" ><span style=\"font-size: 20px;\" >"+data[i].name+"</span></div>"
+			        			+"<div class=\"llName\" ><span  >"+data[i].name+"</span></div>"
 			        			+"<div class=\"llBtns\">"
-			        			+"<p align=\"center\" ><a href=${pageContext.request.contextPath}/order/appointmentIndex?id="+data[i].id+" class=\"btn btn-primary btn-lg\" role=\"button\" style=\"margin-top: -30px;margin-left: 90px;background-color:#2a3380 \" >预约参观</a><p>"
+			        			+"<p align=\"center\" ><a href=${pageContext.request.contextPath}/order/appointmentIndex?id="+data[i].id+" class=\"btn btn-primary btn-lg\" role=\"button\"  >预约参观</a><p>"
 			        			+"</div></div></div>"
 	        			}else{
 	        				str+="<div class=\"loftLine-r\"   style=\"background-color: #ffff;\">"
-			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"  class=\"loftLineImg\" style=\"margin-left: 40px;margin-top: 15px;margin-right: 50px\"></a>"
+			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"  class=\"loftLineImg\" ></a>"
 			        			+"<div class=\"llRightInfo\">"
-			        			+"<div class=\"llName\" style=\"margin-left: -90px\" ><span style=\"font-size: 20px;\" >"+data[i].name+"</span></div>"
+			        			+"<div class=\"llName\" ><span  >"+data[i].name+"</span></div>"
 			        			+"<div class=\"llBtns\">"
-			        			+"<p align=\"center\" ><a href=${pageContext.request.contextPath}/order/appointmentIndex?id="+data[i].id+" class=\"btn btn-primary  btn-lg\" role=\"button\" style=\"margin-top: -30px;margin-left: 90px;background-color:#2a3380 \" >预约参观</a><p>"
+			        			+"<p align=\"center\" ><a href=${pageContext.request.contextPath}/order/appointmentIndex?id="+data[i].id+" class=\"btn btn-primary  btn-lg\" role=\"button\"  >预约参观</a><p>"
 			        			+"</div></div></div>"
 	        			}
 	        			
@@ -136,13 +143,13 @@
 	         
 	    });
 	    }); 
-    /* 
-     function selectStorage()
+    
+   /*   function selectStorage()
     {
         var district = $('#district').val();
         var city = $('#city').val();
         var area = $('#area').val();
-        $('.loftLine').each(function(i){
+        $('.loftLine loftLine-r loftLine-l').each(function(i){
             var s = false;//默认显示
             var dataDistrict = $(this).attr('data-district');
             var dataCity = $(this).attr('data-city');
@@ -199,7 +206,7 @@
     $('#district,#city,#area').change(function(){
         selectStorage();
     });
-    })  */
+    })   */
     </script>
 
 

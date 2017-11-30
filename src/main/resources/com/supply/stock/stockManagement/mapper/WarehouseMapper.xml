@@ -16,7 +16,10 @@
 	   And city=#{city}
 	   </if>
 	   <if test="area!=null and area !=''">
-	   and area=#{area}
+	  <![CDATA[  and area>=#{area}]]>
+	   </if>
+	   <if test="area!=null and area !=''">
+	 <![CDATA[  and area<=#{contact}]]>
 	   </if>
 	   </where>
 			
