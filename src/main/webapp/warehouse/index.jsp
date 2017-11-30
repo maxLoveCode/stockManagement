@@ -149,8 +149,8 @@
 	</table>
 	<div id="toolbar">
 		<a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
-			onclick="newDriver()">新增</a> <a href="#" class="easyui-linkbutton"
-			iconCls="icon-edit" plain="true" onclick="editDriver()">编辑</a> <a
+			onclick="newWarehouse()">新增</a> <a href="#" class="easyui-linkbutton"
+			iconCls="icon-edit" plain="true" onclick="editWarehouse()">编辑</a> <a
 			href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
 			onclick="removeDriver()">删除</a> <input class="easyui-searchbox"
 			searcher="search" prompt="请输入关键字" name="keywords">
@@ -161,6 +161,7 @@
 		buttons="#dlg-buttons">
 		<div class="ftitle">仓库信息</div>
 		<form id="fm" method="post" novalidate enctype="multipart/form-data">
+			<input type="hidden"  name="id" id="id">
 			<div class="fitem">
 				<label>仓库名:</label> <input name="name" id="name"
 					class="easyui-validatebox" required="true">
@@ -228,10 +229,8 @@
             getData(result.districtList[0]);
         }
     });
-    function getData(data,level) {
-       
-       
-        
+    
+    function getData(data,level) {   
         //清空下一级别的下拉列表
         if (level === 'province') {
             citySelect.innerHTML = '';
@@ -262,6 +261,7 @@
         }
         
     }
+    
     function search(obj) {
         var option = obj[obj.options.selectedIndex];
         var keyword = option.text; //关键字
@@ -278,9 +278,6 @@
     }
     
     function uploadFrontPage(newValue, oldValue){
-    	console.log("click");
-    	console.log(newValue);
-    	console.log(oldValue);
     	if(oldValue != newValue)
     	{
     	    var form = new FormData($( "#fm" )[0]);
@@ -304,75 +301,35 @@
     
 	/*上传照片  */
 	var array = new Array();
-	var isnew = true;
-// 	var uploader = Qiniu
-// 			.uploader({
-// 				runtimes : 'html5,flash,html4',
-// 				browse_button : 'fileupload',
-// 				max_file_size : '4mb',
-// 				flash_swf_url : "${pageContext.request.contextPath}/static/plupload/moxie.swf",
-// 				dragdrop : true,
-// 				chunk_size : '4mb',
-// 				multi_selection : !(mOxie.Env.OS.toLowerCase() === "ios"),
-// 				uptoken_url : "${pageContext.request.contextPath}/file/getToken",
-// 				domain : 'vehicle',
-// 				get_new_uptoken : false,
-// 				auto_start : false,
-// 				log_level : 5,
-// 				init : {
-// 					'FilesAdded' : function(up, files) {
-// 						plupload.each(files, function(file) {
-// 							var str = file.type;
-// 							var reg = /(.*).(jpg|jpeg|png)$/;
-// 							if (!reg.test(str)) {
-// 								$.messager.alert("提示", "上传文件格式错误");
-// 							}
-// 						});
-// 						$("#progressDiv").show();
-// 					},
-// 					'UploadProgress' : function(up, file) {
-// 						$('#progress').progressbar({
-// 							value : file.percent
-// 						});
-// 					},
-// 					'UploadComplete' : function() {
-// 						alert("上传完成")
-// 						$('#progress').progressbar({
-// 							value : 0
-// 						});
-// 						$("#progressDiv").hide();
-// 					},
-// 					'FileUploaded' : function(up, file, info) {
-// 						var res = $.parseJSON(info);
-// 						array.push("omfri0aw6.bkt.clouddn.com/" + res.key);
-// 					},
-// 					'Error' : function(up, err, errTip) {
-// 						alert("上传失败: " + errTip)
-// 					}
-// 				}
-// 			});
+
 
 	$('#upload').bind('click', function() {
 		uploader.start();
 	});
 	var url;
-	function newDriver() {
+	function newWarehouse() {
 		$('#dlg').dialog('open').dialog('setTitle', '新增仓库');
 		$('#fm').form('clear');
 		$("#progressDiv").hide();
-		array.length = 0;
 		url = "${pageContext.request.contextPath}" + '/warehouse/add';
 	}
 	
-	function editDriver() {
-		isnew = false;
+	function editWarehouse() {
 		var row = $('#dg').datagrid('getSelected');
 		if (row) {
-			$('#dlg').dialog('open').dialog('setTitle', '编辑司机');
+			$('#dlg').dialog('open').dialog('setTitle', '编辑仓库');
 			$('#fm').form('load', row);
-			url = "${pageContext.request.contextPath}" + '/driver/update'
+			console.log(row);
+			$('id').val(row.id);
+			//$('#province').val('北京市');
+			//$("#province option[text='北京市']").attr("selected", true); 
+			provinceSelect.text = '北京市';
+			console.log($("#province option[text='北京市']"));
+			console.log($('#province').val());
+			CKEDITOR.instances.editor1.setData(row.article);
+			url = "${pageContext.request.contextPath}" + '/warehouse/update'
 		}else{
-			$.messager.alert("提示", "请先选则仓库");
+			$.messager.alert("提示", "请先选择仓库");
 		}
 	}
 
@@ -383,6 +340,7 @@
 					url : url,
 					dataType : "json",
 					data : {
+						id: $("#id").val(),
 						name : $("#name").val(),
 						contact : $("#contact").val(),
 						province: provinceSelect.options[provinceSelect.selectedIndex].text,

@@ -62,6 +62,20 @@ public class WarehouseController extends BaseController {
 		} 
 	}
 	
+	//添加
+	@ResponseBody
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public Message update(Warehouse warehouse)
+	{
+		//Warehouse warehouse=new Warehouse();
+		warehouseService.updateByPrimaryKeySelective(warehouse);
+		if (warehouse.getId() != 0) {
+			return successMessage();
+		} else {
+			return failMessage("新增仓库失败");
+		} 
+	}
+	
 	/**
 	 * 获得列表数据
 	 * 
