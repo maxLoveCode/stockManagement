@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
 <!DOCTYPE html>
 
-<html class="gr__prologis_juxtstaging_com"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<html class="gr__prologis_juxtstaging_com" style="background-color: #f2f2f2"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
