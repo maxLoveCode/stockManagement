@@ -160,7 +160,7 @@
 		style="width: 800px; height: 600px; padding: 10px 20px" closed="true"
 		buttons="#dlg-buttons">
 		<div class="ftitle">仓库信息</div>
-		<form id="fm" method="post" novalidate>
+		<form id="fm" method="post" novalidate enctype="multipart/form-data">
 			<div class="fitem">
 				<label>仓库名:</label> <input name="name" id="name"
 					class="easyui-validatebox" required="true">
@@ -186,8 +186,9 @@
 			
 			<div class="fitem">
 				<label>选择照片:</label> 
-					<input id="fb" type="text" style="width:300px">
+					<input id="fb" type="text" style="width:300px" name="upload">
 			</div>
+			<input type="hidden"  name="frontPage" id="frontPage">
 			<textarea name="editor1" id="editor1"></textarea>
 		<script>
 			CKEDITOR.replace('editor1');
@@ -282,7 +283,7 @@
     	console.log(oldValue);
     	if(oldValue != newValue)
     	{
-    	    var form = new FormData();
+    	    var form = new FormData($( "#fm" )[0]);
     	    form.append("upload",newValue); 
             $.ajax({
                 url:"${pageContext.request.contextPath}/warehouse/imageUpload",
@@ -291,9 +292,10 @@
                 processData:false,
                 contentType:false,
                 success:function(data){
-                    console.log("over..");
+                    $("#frontPage").val(data.url);
                 },
                 error:function(e){
+                	 console.log(form)
                     alert("错误！！");
                 }
             });        
@@ -370,7 +372,7 @@
 			$('#fm').form('load', row);
 			url = "${pageContext.request.contextPath}" + '/driver/update'
 		}else{
-			$.messager.alert("提示", "请先选中司机");
+			$.messager.alert("提示", "请先选则仓库");
 		}
 	}
 
@@ -389,7 +391,7 @@
 						address: $("#address").val(),
 						area: $("#area").val(),
 						article: CKEDITOR.instances.editor1.getData(),
-						images : array.toString()
+						frontPage : $("#frontPage").val()
 					},
 					error : function(request) {
 						$.messager.alert("提示", "保存失败");

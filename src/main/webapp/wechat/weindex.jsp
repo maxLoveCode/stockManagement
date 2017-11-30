@@ -50,14 +50,14 @@
     <div class="selectLine">
     
         <select name="district" id="district" >
-          <option value="">选择区域</option>
+          <option value="">区域</option>
         <c:forEach var="bean" items="${district}">
             <option value="${bean }">${bean}</option>
             </c:forEach>
         </select>
         
         <select name="city" id="city">
-         <option value="">选择城市</option>
+         <option value="">城市</option>
         <c:forEach items="${city}" var="bean">
             <option value="${bean}">${bean }</option>
             </c:forEach>
@@ -120,7 +120,7 @@
 	        		for( var i = 0; i < data.length; i++) {
 	        			if(i%2==0){
 	        				str+="<div class=\"loftLine-l\"   style=\"background-color: #ffff;\">"
-			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"  class=\"loftLineImg\" ></a>"
+			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"?imageView2/1/w/200/h/200/format/jpg/q/100|imageslim  class=\"loftLineImg\" ></a>"
 			        			+"<div class=\"llRightInfo\">"
 			        			+"<div class=\"llName\" ><span  >"+data[i].name+"</span></div>"
 			        			+"<div class=\"llBtns\">"
@@ -128,7 +128,7 @@
 			        			+"</div></div></div>"
 	        			}else{
 	        				str+="<div class=\"loftLine-r\"   style=\"background-color: #ffff;\">"
-			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"  class=\"loftLineImg\" ></a>"
+			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"?imageView2/1/w/200/h/200/format/jpg/q/100|imageslim  class=\"loftLineImg\" ></a>"
 			        			+"<div class=\"llRightInfo\">"
 			        			+"<div class=\"llName\" ><span  >"+data[i].name+"</span></div>"
 			        			+"<div class=\"llBtns\">"

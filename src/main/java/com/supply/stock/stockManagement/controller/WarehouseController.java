@@ -85,11 +85,11 @@ public class WarehouseController extends BaseController {
 	{
 		Map<String, Object> result = new HashMap<String, Object>();
 		Date date = new Date();
-		if(qiniuService.upload(file, date.toString()))
+		if(qiniuService.upload(file, String.valueOf(date.getTime())))
 		{
 			result.put("uploaded", 1);
 			result.put("fileName", file.getName());
-			result.put("url", "http://ozsr8m125.bkt.clouddn.com/"+date.toString());
+			result.put("url", "http://ozsr8m125.bkt.clouddn.com/"+date.getTime());
 		}
 		else
 		{

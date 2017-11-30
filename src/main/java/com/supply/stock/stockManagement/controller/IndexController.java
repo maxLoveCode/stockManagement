@@ -163,7 +163,6 @@ public class IndexController extends BaseController {
 	@RequestMapping(value = "/ajaxwarehouse", method = RequestMethod.GET)
 	public List<Warehouse> ajaxwarehouse(Warehouse warehouse) {
 	List<Warehouse> list=warehouseService.WarehouseList(warehouse);
-	System.out.println("aaaaa");
 		return list;
 	}
 	
