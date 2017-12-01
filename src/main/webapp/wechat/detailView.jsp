@@ -10,8 +10,6 @@
 		<script src="https://cdn.bootcss.com/ionic/1.3.2/js/ionic.bundle.min.js"></script>
 		 <script type="text/javascript">
         angular.module('ionicApp', ['ionic']);
-        
-        
         </script>
 	</head>
 	<body>
@@ -51,7 +49,11 @@
 						<span style="color:#2a3380">${warehouse.contact} </span>
 					</div>
 					<c:if test="${warehouse.article!=null}">
+<<<<<<< HEAD
 					<div class="item item-input ">
+=======
+					<div class="article" style="padding:15px">
+>>>>>>> 4b8920228c94b02d37c55b71e713c10bfcb897ad
 						${warehouse.article}
 					</div>
 					</c:if>

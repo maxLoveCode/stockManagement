@@ -49,17 +49,18 @@
 
     <div class="selectLine">
     
-        <select name="district" id="district" >
-          <option value="">区域</option>
-        <c:forEach var="bean" items="${district}">
-            <option value="${bean }">${bean}</option>
-            </c:forEach>
-        </select>
         
         <select name="city" id="city">
          <option value="">城市</option>
         <c:forEach items="${city}" var="bean">
             <option value="${bean}">${bean }</option>
+            </c:forEach>
+        </select>
+        
+        <select name="district" id="district" >
+          <option value="">区域</option>
+        <c:forEach var="bean" items="${district}">
+            <option value="${bean }">${bean}</option>
             </c:forEach>
         </select>
         
