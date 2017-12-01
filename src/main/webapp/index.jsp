@@ -39,12 +39,6 @@
 								"icon" : "icon-users",
 								"url" : "${pageContext.request.contextPath}"
 										+ "/admin/index"
-							},
-							{
-								"menuname" : "角色管理",
-								"icon" : "icon-role",
-								"url" : "${pageContext.request.contextPath}"
-										+ "/role/index"
 							}
 							/*, 
 							{
@@ -194,10 +188,10 @@
 		<table width="100%" border="0" align="center" cellpadding="0"
 			cellspacing="0" class="qy_toplrk">
 			<tr>
-				<td width="401" height="78" align="left" valign="middle"
-					class="qy_top2bg" style="background-image:url(${pageContext.request.contextPath}/static/images/bg1.png);background-repeat:no-repeat;">
+				<td width="600" height="78" align="left" valign="middle"
+					class="qy_top2bg" style="background-image:url(${pageContext.request.contextPath}/static/images/bg3.png);background-repeat:no-repeat;">
 				</td>
-				<td align="right"  valign="middle" class="qy_top2bg" style="background-image:url(${pageContext.request.contextPath}/static/images/bg2.png);background-repeat:x;">
+				<td align="right"  valign="middle" class="qy_top2bg" style="background-color:#2a3090;background-repeat:x;">
 					<table width="350" border="0" cellspacing="0" cellpadding="0"  >
 						<tr>
 							<td><a href="index" target="_parent"><img
