@@ -49,7 +49,8 @@ $(function() {
 								{
 									field : 'visitTime',
 									title : '访问时间',
-									width : 100
+									formatter : formatDate,
+									width : 150
 								},
 								{
 									field : 'createtime',

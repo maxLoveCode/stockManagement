@@ -52,7 +52,6 @@
 					</div>
 					<c:if test="${warehouse.article!=null}">
 					<div class="item item-input ">
-						
 						${warehouse.article}
 					</div>
 					</c:if>
