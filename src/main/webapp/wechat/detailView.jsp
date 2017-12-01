@@ -14,7 +14,7 @@
 	</head>
 	<body>
 	<ion-view title="Home" hide-nav-bar="true">
-      <ion-scroll zooming="true"  style="height: 94%">
+      <ion-scroll   style="height: 94%">
 		<div class="item item-image">
 			<img src="${warehouse.frontPage}">
 		</div>

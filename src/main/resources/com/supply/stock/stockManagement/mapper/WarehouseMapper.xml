@@ -12,7 +12,7 @@
 	   <if test="province!=null and province !=''">
 	   	And province=#{province}
 	   </if>
-	   <if test="city!=null and city !=''">
+	   <if test="city!=null and city !=''and city !='--请选择--'">
 	   And city=#{city}
 	   </if>
 	   <if test="area!=null and area !=''">
