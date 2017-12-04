@@ -9,10 +9,10 @@
 	    stock_warehouse
 	   <where>
 	   
-	   <if test="province!=null and province !=''">
+	   <if test="province!=null and province !='' and province !='--请选择--' and province !='省份' ">
 	   	And province=#{province}
 	   </if>
-	   <if test="city!=null and city !=''and city !='--请选择--'">
+	   <if test="city!=null and city !=''and city !='--请选择--' and city !='城市'">
 	   And city=#{city}
 	   </if>
 	   <if test="area!=null and area !=''">

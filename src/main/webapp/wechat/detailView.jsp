@@ -32,14 +32,14 @@
 						<div class="input-label">
 							<b><span style="color:#2a3380">所在地址</span></b>
 						</div>
-						${warehouse.address} &nbsp;&nbsp;<a href=""></a>
+						<textarea rows="" cols="" disabled="disabled" style="width: 50%">${warehouse.address}</textarea> 
 					</div>
 
 					<div class="item item-input ">
 						<div class="input-label">
 							<b><span style="color:#2a3380">面积</span></b>
 						</div>
-						${warehouse.area}&nbsp;&nbsp;平方米
+						${warehouse.area}平方米
 					</div>
 
 					<div class="item item-input ">

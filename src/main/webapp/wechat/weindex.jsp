@@ -106,7 +106,7 @@
     </div>
 </div>
 	    <script type="text/javascript">
-	    $('#district,#city,#area').change(function(){
+	    $('#province,#city,#area').change(function(){
 	    	 var province = $('#province').find("option:selected").text();
 	         var city = $('#city').find("option:selected").text();
 	         var arear = $('#area').val();
