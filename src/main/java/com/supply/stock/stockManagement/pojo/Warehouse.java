@@ -31,6 +31,10 @@ public class Warehouse extends Base{
 	
 	@Column(name = "frontPage")
 	private String frontPage;
+	@Column(name = "frontPage1")
+	private String frontPage1;
+	@Column(name = "frontPage2")
+	private String frontPage2;
 	
 	@Column(name = "area")
 	private Integer area;
@@ -110,4 +114,21 @@ public class Warehouse extends Base{
 	public void setArea(Integer area) {
 		this.area = area;
 	}
+
+	public String getFrontPage1() {
+		return frontPage1;
+	}
+
+	public void setFrontPage1(String frontPage1) {
+		this.frontPage1 = frontPage1;
+	}
+
+	public String getFrontPage2() {
+		return frontPage2;
+	}
+
+	public void setFrontPage2(String frontPage2) {
+		this.frontPage2 = frontPage2;
+	}
+	
 }

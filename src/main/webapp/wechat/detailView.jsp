@@ -11,14 +11,61 @@
 		 <script type="text/javascript">
         angular.module('ionicApp', ['ionic']);
         </script>
+        
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+         <style>
+  /* Make the image fully responsive */
+  .carousel-inner img { 
+      width: 100%;
+    
+        }
+  </style>  
 	</head>
-	<body>
+	<body >
 	<ion-view title="Home" hide-nav-bar="true">
       <ion-scroll   style="height: 94%">
-		<div class="item item-image">
+		<%--  <div class="item item-image">
 			<img src="${warehouse.frontPage}">
-		</div>
+		</div> --%>
+		
+ 
+			<div id="demo" class="carousel slide" data-ride="carousel">
+ 
+  <!-- 指示符 -->
+  <ul class="carousel-indicators">
+    <li data-target="#demo" data-slide-to="0" class="active"></li>
+    <li data-target="#demo" data-slide-to="1"></li>
+    <li data-target="#demo" data-slide-to="2"></li>
+  </ul>
+ 
+  <!-- 轮播图片 -->
+  <div class="carousel-inner controller">
+    <div class="item active item-image">
+      <img src="${warehouse.frontPage}?imageView2/1/w/400/h/267/q/100|imageslim">
+    </div>
+    <div class="item item-image">
+      <img src="${warehouse.frontPage1}?imageView2/1/w/400/h/267/q/100|imageslim">
+    </div>
+    <div class="item item-image">
+      <img src="${warehouse.frontPage2}?imageView2/1/w/400/h/267/q/100|imageslim">
+    </div>
+   <!--  <div class="carousel-item item-image">
+      <img src="http://ozsr8m125.bkt.clouddn.com/1512355114399?imageView2/1/w/400/h/267/q/100|imageslim">
+    </div> -->
+  </div>
+ 
+  <!-- 左右切换按钮 -->
+  <!-- <a class="carousel-control-prev" href="#demo" data-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </a>
+  <a class="carousel-control-next" href="#demo" data-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </a> -->
 
+</div>
+			
 				<div class="list">
 
 					<div class="item item-input">
@@ -28,11 +75,14 @@
 						${warehouse.name}
 					</div>
 
-					<div class="item item-input">
-						<div class="input-label">
+					<div class="item item-input" >
+						<div class="input-label" >
 							<b><span style="color:#2a3380">所在地址</span></b>
 						</div>
-						<textarea rows="" cols="" disabled="disabled" style="width: 50%">${warehouse.address}</textarea> 
+						<table>
+						<tr><td width="220px">${warehouse.address}</td></tr>
+						
+						</table>
 					</div>
 
 					<div class="item item-input ">

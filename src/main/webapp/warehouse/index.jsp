@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -120,7 +121,7 @@
 							}
 						});
 						
-						$('#fb').filebox({
+						$('#fb,#fb1,#fb2').filebox({
    							buttonText: '选择文件',
     						buttonAlign: 'right',
     						accept: 'image/*',
@@ -188,8 +189,24 @@
 			<div class="fitem">
 				<label>选择照片:</label> 
 					<input id="fb" type="text" style="width:300px" name="upload">
+					<!-- <input type="text"  name="frontPage" id="frontPage">
+					<input type="text"  name="frontPage1" id="frontPage1">
+					<input type="text"  name="frontPage2" id="frontPage2"> -->
+			
 			</div>
-			<input type="hidden"  name="frontPage" id="frontPage">
+			
+				<div class="fitem">
+					<img id=img alt="" src=""  >
+					<input type="text" style="width: 50px" name="frontPage" id="frontPage">
+					<img id=img1 alt="" src="" >
+					<input type="text" style="width: 50px" name="frontPage1" id="frontPage1">
+					<img id=img2 alt="" src="" >
+					<input type="text" style="width: 50px" name="frontPage2" id="frontPage2">
+					
+			
+			</div>
+					
+			
 			<textarea name="editor1" id="editor1"></textarea>
 		<script>
 			CKEDITOR.replace('editor1');
@@ -289,11 +306,26 @@
                 processData:false,
                 contentType:false,
                 success:function(data){
-                    $("#frontPage").val(data.url);
+                	if($("#frontPage").val()==""){
+                		$("#frontPage").val(data.url);
+                		$("#img").attr('src',data.url+"?imageView2/1/w/50/h/50/q/75|imageslim");
+                		return true;
+                	}
+                    
+                	if($("#frontPage1").val()==""){
+                		$("#frontPage1").val(data.url);
+                		$("#img1").attr('src',data.url+"?imageView2/1/w/50/h/50/q/75|imageslim");
+                		return true;
+                	}
+                	if($("#frontPage2").val()==""){
+                		$("#frontPage2").val(data.url);
+                		$("#img2").attr('src',data.url+"?imageView2/1/w/50/h/50/q/75|imageslim");
+                		return true;
+                	}
                 },
                 error:function(e){
                 	 console.log(form)
-                    alert("错误！！");
+                    alert("上传图片过大错误！！");
                 }
             });        
     	}
@@ -304,6 +336,12 @@
 
 
 	$('#upload').bind('click', function() {
+		uploader.start();
+	});
+	$('#upload1').bind('click', function() {
+		uploader.start();
+	});
+	$('#upload2').bind('click', function() {
 		uploader.start();
 	});
 	var url;
@@ -349,7 +387,9 @@
 						address: $("#address").val(),
 						area: $("#area").val(),
 						article: CKEDITOR.instances.editor1.getData(),
-						frontPage : $("#frontPage").val()
+						frontPage : $("#frontPage").val(),
+						frontPage1 : $("#frontPage1").val(),
+						frontPage2 : $("#frontPage2").val()
 					},
 					error : function(request) {
 						$.messager.alert("提示", "保存失败");
