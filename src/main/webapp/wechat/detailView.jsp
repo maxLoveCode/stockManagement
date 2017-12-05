@@ -43,13 +43,13 @@
   <!-- 轮播图片 -->
   <div class="carousel-inner controller">
     <div class="item active item-image">
-      <img src="${warehouse.frontPage}?imageView2/1/w/400/h/267/q/100|imageslim">
+      <a class="carousel-control-prev" href="#demo"  data-slide="prev"><img src="${warehouse.frontPage}?imageView2/1/w/400/h/267/q/100|imageslim"></a>
     </div>
     <div class="item item-image">
-      <img src="${warehouse.frontPage1}?imageView2/1/w/400/h/267/q/100|imageslim">
+    <a class="carousel-control-prev"  href="#demo"  data-slide="prev">  <img src="${warehouse.frontPage1}?imageView2/1/w/400/h/267/q/100|imageslim"></a>
     </div>
     <div class="item item-image">
-      <img src="${warehouse.frontPage2}?imageView2/1/w/400/h/267/q/100|imageslim">
+      <a class="carousel-control-prev"  href="#demo"  data-slide="prev"> <img src="${warehouse.frontPage2}?imageView2/1/w/400/h/267/q/100|imageslim"></a>
     </div>
    <!--  <div class="carousel-item item-image">
       <img src="http://ozsr8m125.bkt.clouddn.com/1512355114399?imageView2/1/w/400/h/267/q/100|imageslim">
@@ -57,12 +57,12 @@
   </div>
  
   <!-- 左右切换按钮 -->
-  <!-- <a class="carousel-control-prev" href="#demo" data-slide="prev">
+  <!--  <a class="carousel-control-prev" href="#demo" data-slide="prev">
     <span class="carousel-control-prev-icon"></span>
   </a>
   <a class="carousel-control-next" href="#demo" data-slide="next">
     <span class="carousel-control-next-icon"></span>
-  </a> -->
+  </a>  -->
 
 </div>
 			
