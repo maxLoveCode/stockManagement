@@ -49,10 +49,10 @@
 
     <div class="selectLine">
     
-     <select name="province" id='province' onchange='search(this)'>
+   <select name="province" id='province' onchange='search(this)'>
      <option value="">省份</option>
      </select>
-         <select id='city' onchange='search(this)'>
+        <select id='city' onchange='search(this)'>
           <option value="">城市</option>
           </select>  
       <%--   <select name="city" id="city">
@@ -70,7 +70,7 @@
         </select> --%>
         
         <select name="area" id="area">
-            <option value="">仓库面积</option>
+            <option value="">面积</option>
             <option value="0~30000">3万平米以内</option>
             <option value="30000~60000">3-6万平米</option>
             <option value="60000~100000">6-10万平米</option>
@@ -83,7 +83,7 @@
     	<c:forEach items="${list}" varStatus="i" var="item">
     		<c:if test="${!(i.count%2 eq 0)}">
         	<div class="loftLine-l"   style="background-color: #ffff;" data-area="${item.area}">
-               <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}">  <img src="${item.frontPage}?imageView2/1/w/200/h/200/format/jpg/q/100|imageslim"  class="loftLineImg"></a>
+               <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}">  <img src="${item.frontPage}?imageView2/1/w/260/h/260/format/jpg/q/100|imageslim"  class="loftLineImg"></a>
             <div class="llRightInfo">
                 <div class="llName"><span>${item.name}</span></div>
                 <div class="llBtns">
@@ -93,7 +93,7 @@
         </div>
         </c:if><c:if test="${i.count%2 eq 0}">
         	<div class="loftLine-r" data-district="华东"  style="background-color: #ffff;" data-city="上海" data-area="${item.area}">
-           <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}">  <img src="${item.frontPage}?imageView2/1/w/200/h/200/format/jpg/q/100|imageslim"  class="loftLineImg"></a>
+           <a href="${pageContext.request.contextPath}/warehouse/detailView+${item.id}">  <img src="${item.frontPage}?imageView2/1/w/260/h/260/format/jpg/q/100|imageslim"  class="loftLineImg"></a>
             <div class="llRightInfo">
                 <div class="llName"><span>${item.name}</span></div>
                 <div class="llBtns">
@@ -126,7 +126,7 @@
 	        		for( var i = 0; i < data.length; i++) {
 	        			if(i%2==0){
 	        				str+="<div class=\"loftLine-l\"   style=\"background-color: #ffff;\">"
-			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"?imageView2/1/w/200/h/200/format/jpg/q/100|imageslim  class=\"loftLineImg\" ></a>"
+			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"?imageView2/1/w/260/h/260/format/jpg/q/100|imageslim  class=\"loftLineImg\" ></a>"
 			        			+"<div class=\"llRightInfo\">"
 			        			+"<div class=\"llName\" ><span  >"+data[i].name+"</span></div>"
 			        			+"<div class=\"llBtns\">"
@@ -134,7 +134,7 @@
 			        			+"</div></div></div>"
 	        			}else{
 	        				str+="<div class=\"loftLine-r\"   style=\"background-color: #ffff;\">"
-			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"?imageView2/1/w/200/h/200/format/jpg/q/100|imageslim  class=\"loftLineImg\" ></a>"
+			        			+"<a href=${pageContext.request.contextPath}/warehouse/detailView+"+data[i].id+">  <img src="+data[i].frontPage+"?imageView2/1/w/260/h/260/format/jpg/q/100|imageslim  class=\"loftLineImg\" ></a>"
 			        			+"<div class=\"llRightInfo\">"
 			        			+"<div class=\"llName\" ><span  >"+data[i].name+"</span></div>"
 			        			+"<div class=\"llBtns\">"

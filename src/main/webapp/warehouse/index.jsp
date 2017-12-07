@@ -189,19 +189,23 @@
 			<div class="fitem">
 				<label>选择照片:</label> 
 					<input id="fb" type="text" style="width:300px" name="upload">
+					<input class="easyui-linkbutton" type="button" value="重新上传" id="clear">
+					<input type="hidden"  name="frontPage" id="frontPage"/> 
+				<input type="hidden"  name="frontPage1" id="frontPage1"/> 
 					<!-- <input type="text"  name="frontPage" id="frontPage">
 					<input type="text"  name="frontPage1" id="frontPage1">
 					<input type="text"  name="frontPage2" id="frontPage2"> -->
 			
 			</div>
 			
-				<div class="fitem">
-					<img id=img alt="" src=""  >
-					<input type="text" style="width: 50px" name="frontPage" id="frontPage">
-					<img id=img1 alt="" src="" >
+				<div class="fitem" id="myPicture">
+				
+					<!-- <img id="img" alt="" src=""  >
+					-->
+					<!-- <img id="img1" alt="" src="" >
 					<input type="text" style="width: 50px" name="frontPage1" id="frontPage1">
-					<img id=img2 alt="" src="" >
-					<input type="text" style="width: 50px" name="frontPage2" id="frontPage2">
+					<img id="img2" alt="" src="" >
+					<input type="text" style="width: 50px" name="frontPage2" id="frontPage2"> -->
 					
 			
 			</div>
@@ -306,7 +310,13 @@
                 processData:false,
                 contentType:false,
                 success:function(data){
+                	$("#myPicture").append("<img id=\"img\" alt=\"\" src="+data.url+"?imageView2/1/w/50/h/50/q/75|imageslim  >&nbsp;&nbsp;");
                 	if($("#frontPage").val()==""){
+                		$("#frontPage").val(data.url);
+                	}
+                	$("#frontPage1").val($("#frontPage1").val()+","+data.url); 
+                	
+                	/* if($("#frontPage").val()==""){
                 		$("#frontPage").val(data.url);
                 		$("#img").attr('src',data.url+"?imageView2/1/w/50/h/50/q/75|imageslim");
                 		return true;
@@ -320,8 +330,8 @@
                 	if($("#frontPage2").val()==""){
                 		$("#frontPage2").val(data.url);
                 		$("#img2").attr('src',data.url+"?imageView2/1/w/50/h/50/q/75|imageslim");
-                		return true;
-                	}
+                		return true; 
+                	}*/
                 },
                 error:function(e){
                 	 console.log(form)
@@ -388,8 +398,8 @@
 						area: $("#area").val(),
 						article: CKEDITOR.instances.editor1.getData(),
 						frontPage : $("#frontPage").val(),
-						frontPage1 : $("#frontPage1").val(),
-						frontPage2 : $("#frontPage2").val()
+						frontPage1 : $("#frontPage1").val()
+						
 					},
 					error : function(request) {
 						$.messager.alert("提示", "保存失败");
@@ -434,6 +444,15 @@
 			'keywords' : value
 		});
 	}
+	$(function(){
+	$("#clear").click(function(){
+	$("#myPicture").html("");
+	$("#frontPage").val("");
+	$("#frontPage1").val("")
+	});
+	
+	});
+	
 		
 </script>
 </html>

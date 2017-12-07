@@ -1,5 +1,6 @@
 package com.supply.stock.stockManagement.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -45,6 +46,14 @@ public class WarehouseController extends BaseController {
 	public String detailView(@PathVariable("id") Integer id, HttpSession session) {
 		Warehouse warehouse = warehouseService.selectByPrimaryKey(id);
 		session.setAttribute("warehouse", warehouse);
+		String url=warehouse.getFrontPage1();
+		String[] string=url.split(",");
+		List<String> a=new ArrayList<String>();
+		for (String string2 : string) {
+			if(""!=string2)
+				a.add(string2);
+		}
+		session.setAttribute("url", url);
 		return "wechat/detailView";
 	}
 	
@@ -123,6 +132,36 @@ public class WarehouseController extends BaseController {
 	@RequestMapping(value = "/selectList")
 	public List<Warehouse> selectList(BaseCondition condition) {
 		return warehouseService.select(new Warehouse());
+	}
+	
+	
+	/**
+	 * 
+	 * 给图片表插入数据
+	 * 
+	 */
+	@ResponseBody
+	@RequestMapping(value="/insetPicture")
+	public Map<String, Object> insetPicture(@RequestParam("upload")MultipartFile file, HttpServletRequest request)
+	{
+		
+		Map<String, Object> result = new HashMap<String, Object>();
+		Date date = new Date();
+		if(qiniuService.upload(file, String.valueOf(date.getTime())))
+		{
+			result.put("uploaded", 1);
+			result.put("fileName", file.getName());
+			result.put("url", "http://ozsr8m125.bkt.clouddn.com/"+date.getTime());
+		}
+		else
+		{
+			result.put("uploaded", 0);
+			result.put("fileName", date.toString());
+		}
+		return result;
+		
+		
+		
 	}
 	
 }
