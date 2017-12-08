@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -134,34 +135,20 @@ public class WarehouseController extends BaseController {
 		return warehouseService.select(new Warehouse());
 	}
 	
-	
 	/**
-	 * 
-	 * 给图片表插入数据
+	 * shanchu
 	 * 
 	 */
 	@ResponseBody
-	@RequestMapping(value="/insetPicture")
-	public Map<String, Object> insetPicture(@RequestParam("upload")MultipartFile file, HttpServletRequest request)
+	@RequestMapping(value = "/del", method = RequestMethod.POST)
+	public Message del(Integer id)
 	{
-		
-		Map<String, Object> result = new HashMap<String, Object>();
-		Date date = new Date();
-		if(qiniuService.upload(file, String.valueOf(date.getTime())))
-		{
-			result.put("uploaded", 1);
-			result.put("fileName", file.getName());
-			result.put("url", "http://ozsr8m125.bkt.clouddn.com/"+date.getTime());
-		}
-		else
-		{
-			result.put("uploaded", 0);
-			result.put("fileName", date.toString());
-		}
-		return result;
-		
-		
-		
+		//Warehouse warehouse=new Warehouse();
+	int a	=warehouseService.deleteByPrimaryKey(id);
+		if (a != 0) {
+			return successMessage();
+		} else {
+			return failMessage("删除失败");
+		} 
 	}
-	
 }

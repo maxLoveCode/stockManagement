@@ -428,10 +428,10 @@
 			$.messager.confirm('确认框', '是否确认删除这条记录?', function(r) {
 				if (r) {
 					$.post("${pageContext.request.contextPath}"
-							+ '/driver/delete', {
+							+ '/warehouse/del', {
 						id : row.id
 					}, function(result) {
-						DO(result)
+						$('#dg').datagrid('reload'); 
 					}, 'json');
 				}
 			});

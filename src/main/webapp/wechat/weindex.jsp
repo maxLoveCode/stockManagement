@@ -8,6 +8,7 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <title>郑明 - 仓库查询</title>
+
 	<script type="text/javascript" src="http://webapi.amap.com/maps?v=1.4.1&key=bcff4cb66f501fd52e67bf44cf5a4a65&plugin=AMap.DistrictSearch"></script>
 		<link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
 	<script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -42,6 +43,9 @@
          }
 </script><meta name="viewport" content="width=640, user-scalable=no, target-densitydpi=device-dpi"> 
 <!--移动端版本兼容 end -->
+
+
+
 </head>
 <body data-gr-c-s-loaded="true">
 <div class="wrapper">
@@ -49,10 +53,10 @@
 
     <div class="selectLine">
     
-   <select name="province" id='province' onchange='search(this)'>
+   <select  name="province" id='province' onchange='search(this)'>
      <option value="">省份</option>
      </select>
-        <select id='city' onchange='search(this)'>
+        <select style="margin-left: 9%" id='city' onchange='search(this)'>
           <option value="">城市</option>
           </select>  
       <%--   <select name="city" id="city">
@@ -69,8 +73,8 @@
             </c:forEach>
         </select> --%>
         
-        <select name="area" id="area">
-            <option value="">面积</option>
+        <select  style="margin-left: 10%;width: 15%" name="area" id="area" >
+            <option value="" >面积</option>
             <option value="0~30000">3万平米以内</option>
             <option value="30000~60000">3-6万平米</option>
             <option value="60000~100000">6-10万平米</option>

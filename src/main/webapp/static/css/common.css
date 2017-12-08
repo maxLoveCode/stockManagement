@@ -21,7 +21,7 @@ select,input,textarea{font-family:inherit; outline:none;}
 /*仓库查询*/
 .selectLine{ height:55px; width:100%; background:#2a3380;}
 .selectLine select{ background:none; border:none; display:block; width:32%; height:66px; line-height:66px; font-weight: 150;
-color:#ffffff; padding-left:80px; display: inline-block; font-size:28px; -webkit-appearance:none; appearance:none;}
+color:#ffffff; padding-left:20px; display: inline-block; font-size:28px; -webkit-appearance:none; appearance:none;}
 .loftList{ background-color: #f3f3f3;text-align: center; height:100%}
 .loftLine-l{ border-bottom:13px solid #f2f2f2;width:49%; display:inline-block; float:left; padding: 18px}
 .loftLine-r{ border-bottom:13px solid #f2f2f2;width:49%; display:inline-block; float:right; padding: 18px}
@@ -29,7 +29,7 @@ color:#ffffff; padding-left:80px; display: inline-block; font-size:28px; -webkit
 .llRightInfo{ float:right; width:100%; padding:0 0 0 0; color:#333; font-size:28px;}
 .llName{ height:40px; line-height:38px; padding:5px 0 5px 0; margin:5px; color:#333; font-size:24px; text-align:center; word-break:break-all; overflow:hidden;}
 .llBtns{ text-align:center; 100%;}
-.llBtns a{width:150px; background:#2a3380; padding:5px; font-size:20px}
+.llBtns a{width:200px; background:#2a3380; padding:5px; font-size:20px}
 
 .topTitle{ background:#04564a; border-bottom:2px solid #079077; height:86px; line-height:86px; color:#FFF; font-size:28px; text-align:center;}
 .titleBack{ position:absolute; left:0; top:10px; padding:20px; line-height:100%;}

@@ -149,7 +149,7 @@
         </div>
 
         <!-- Slides Container -->
-        <div id="s" u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 800px; height: 356px; overflow: hidden;">
+        <div id="s" u="slides" style="cursor: move; position: absolute; left: 0px; top: 0px; width: 800px; height: 456px; overflow: hidden;">
             
           
            <c:forEach items="${url }" var="bean">
@@ -206,8 +206,8 @@
                     position: absolute;
                     top: 0px;
                     left: 0px;
-                    width: 68px;
-                    height: 68px;
+                    width: 72px;
+                    height: 72px;
                     border: #000 2px solid;
                 }
 
