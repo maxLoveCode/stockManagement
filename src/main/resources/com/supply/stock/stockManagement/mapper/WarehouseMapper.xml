@@ -22,7 +22,7 @@
 	 <![CDATA[  and area<=#{contact}]]>
 	   </if>
 	   </where>
-			
+		ORDER BY sort DESC	
 	</select>
 	
 	<resultMap type="com.supply.stock.stockManagement.pojo.Warehouse" id="Warehouse">

@@ -136,7 +136,7 @@
         });
     </script>
        <div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 800px;
-        height: 456px; background: #191919; overflow: hidden;">
+        height: 567px; background: #f2f2f2f2; overflow: hidden;">
 
         <!-- Loading Screen -->
         <div u="loading" style="position: absolute; top: 0px; left: 0px;">
@@ -206,8 +206,6 @@
                     position: absolute;
                     top: 0px;
                     left: 0px;
-                    width: 72px;
-                    height: 72px;
                     border: #000 2px solid;
                 }
 
@@ -259,26 +257,28 @@
 							<b><span style="color:#2a3380">所在地址</span></b>
 						</div>
 						<table>
-						<tr><td width="220px">${warehouse.address}</td></tr>
+						<tr><td width="220px"><a    href="${pageContext.request.contextPath}/order/mapAddress?id=${warehouse.id}" >${warehouse.address} </a><a class="icon ion-location"></a><a/></td></tr>
 						
 						</table>
 					</div>
 
 					<div class="item item-input ">
 						<div class="input-label">
-							<b><span style="color:#2a3380">面积</span></b>
+							<b><span style="color:#2a3380">仓库面积</span></b>
 						</div>
 						${warehouse.area}平方米
 					</div>
-
+					<c:if test="${warehouse.frontPage2!=null}">
 					<div class="item item-input ">
 						<div class="input-label">
-							<b><span style="color:#2a3380">  联系电话</span></b>
+							<b><span style="color:#2a3380">剩余面积</span></b>
 						</div>
-						<span style="color:#2a3380">${warehouse.contact} </span>
+						${warehouse.frontPage2}平方米
 					</div>
+					</c:if>
+
 					<c:if test="${warehouse.article!=null}">
-					<div class="article" style="padding:15px">
+					<div class="article item item-image" style="padding:15px">
 						${warehouse.article}
 					</div>
 					</c:if>

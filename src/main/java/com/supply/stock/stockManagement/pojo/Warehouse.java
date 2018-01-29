@@ -35,7 +35,29 @@ public class Warehouse extends Base{
 	private String frontPage1;
 	@Column(name = "frontPage2")
 	private String frontPage2;
+	@Column(name = "sort")
+	private String sort;
+	@Column(name = "position")
+	private String position;
 	
+	
+	
+	public String getPosition() {
+		return position;
+	}
+
+	public void setPosition(String position) {
+		this.position = position;
+	}
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
+	}
+
 	@Column(name = "area")
 	private Integer area;
 

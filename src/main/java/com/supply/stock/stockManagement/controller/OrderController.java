@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.taglibs.standard.lang.jstl.test.beans.PublicBean1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -68,4 +69,14 @@ public class OrderController extends BaseController{
 		map.addAttribute("warehouse", warehouse);
 		return "wechat/appointmentIndex";
 	}
+	
+	@RequestMapping(value="mapAddress")
+	public String mapAddress(Integer id,ModelMap map) {
+		map.addAttribute("warehouse", warehouseService.selectByPrimaryKey(id));
+		
+		return "wechat/addre";
+		
+	}
+	
+	
 }

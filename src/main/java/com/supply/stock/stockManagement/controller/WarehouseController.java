@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -108,17 +109,37 @@ public class WarehouseController extends BaseController {
 	public Map<String, Object> imageUpload(@RequestParam("upload")MultipartFile file, HttpServletRequest request)
 	{
 		Map<String, Object> result = new HashMap<String, Object>();
-		Date date = new Date();
-		if(qiniuService.upload(file, String.valueOf(date.getTime())))
+		String s = UUID.randomUUID().toString();
+		if(qiniuService.upload(file, s))
 		{
 			result.put("uploaded", 1);
 			result.put("fileName", file.getName());
-			result.put("url", "http://ozsr8m125.bkt.clouddn.com/"+date.getTime());
+			result.put("url", "http://ozsr8m125.bkt.clouddn.com/"+s);
 		}
 		else
 		{
 			result.put("uploaded", 0);
-			result.put("fileName", date.toString());
+			result.put("fileName", s.toString());
+		}
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/imageUpload1")
+	public Map<String, Object> imageUpload1(@RequestParam("upload1")MultipartFile file, HttpServletRequest request)
+	{
+		Map<String, Object> result = new HashMap<String, Object>();
+		String s = UUID.randomUUID().toString();
+		if(qiniuService.upload(file, s))
+		{
+			result.put("uploaded", 1);
+			result.put("fileName", file.getName());
+			result.put("url", "http://ozsr8m125.bkt.clouddn.com/"+s);
+		}
+		else
+		{
+			result.put("uploaded", 0);
+			result.put("fileName", s);
 		}
 		return result;
 	}
@@ -151,4 +172,8 @@ public class WarehouseController extends BaseController {
 			return failMessage("删除失败");
 		} 
 	}
+	
+	
+	
+	
 }

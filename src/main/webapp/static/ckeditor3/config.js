@@ -19,4 +19,5 @@ CKEDITOR.editorConfig = function( config ) {
 	config.extraPlugins = 'uploadimage';
 	config.uploadUrl = 'imageUpload';
 	config.imageUploadUrl = 'imageUpload';
+	
 };

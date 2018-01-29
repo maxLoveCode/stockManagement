@@ -29,12 +29,30 @@
 							url : "${pageContext.request.contextPath}"
 									+ '/warehouse/list',
 							toolbar : '#toolbar',
+							 singleSelect:true, 
+							remoteSort:false,
+							
 							columns : [ [
 									{
 										field : 'id',
 										title : '仓库id',
 										width : 100,
 										align : 'right'
+									},
+									{
+										field : 'sort',
+										title : '仓库序号',
+										width : 100,
+										align : 'right',
+										sortable:true,
+										 sorter:function(a,b){    
+											 var number1 = parseFloat(a);  
+											 var number2 = parseFloat(b);  
+											   
+											 return (number1 > number2 ? 1 : -1); 
+								            }    
+										 
+										
 									},
 									{
 										field : 'name',
@@ -121,11 +139,17 @@
 							}
 						});
 						
-						$('#fb,#fb1,#fb2').filebox({
+						$('#fb').filebox({
    							buttonText: '选择文件',
     						buttonAlign: 'right',
     						accept: 'image/*',
     						onChange: uploadFrontPage
+						});
+						$('#fb1').filebox({
+   							buttonText: '选择文件',
+    						buttonAlign: 'right',
+    						accept: 'image/*',
+    						onChange: uploadFrontPage1
 						})
 	});
 <%@ include file="/common/dateFormatter.jsp" %>
@@ -168,6 +192,10 @@
 					class="easyui-validatebox" required="true">
 			</div>
 			<div class="fitem">
+				<label>仓库序号:</label> <input name="sort" id="sort"
+					class="easyui-validatebox" required="true">
+			</div>
+			<div class="fitem">
 				<label>联系方式:</label> <input name="contact" id="contact"
 					class="easyui-validatebox" required=" ture">
 			</div>
@@ -178,19 +206,40 @@
 			</div>
 			
 			<div class="fitem">
-				<label>地址:</label> <input name="address" id="address"
+				<label>地址:</label> <input name="address" style="width: 330px" id="address"
+					class="easyui-validatebox" readonly="readonly" required=" ture">
+					
+					<input id="position" type="hidden"  name="position" value="">
+					
+		<a href="javascript:void(0)" class="easyui-linkbutton" onclick="$('#w').window('open')">Open</a>
+	<div id="w" class="easyui-window" title="地图" data-options="modal:true,closed:true,iconCls:'icon-save'" style="width:900px;height:500px;padding:10px;">
+		<iframe src="../map.html" style="width:860px;height:400px;"></iframe>
+	</div>
+			</div>
+			<div class="fitem">
+				<label>仓库面积:</label> <input name="area" id="area"
 					class="easyui-validatebox" required=" ture">
 			</div>
 			<div class="fitem">
-				<label>面积:</label> <input name="area" id="area"
+				<label>剩余面积:</label> <input name="frontPage2" id="frontPage2"
 					class="easyui-validatebox" required=" ture">
 			</div>
-			
 			<div class="fitem">
-				<label>选择照片:</label> 
-					<input id="fb" type="text" style="width:300px" name="upload">
+				<label>主页照片:</label> 
+					<input id="fb" type="text" style="width:300px" name="upload" >
 					<input class="easyui-linkbutton" type="button" value="重新上传" id="clear">
 					<input type="hidden"  name="frontPage" id="frontPage"/> 
+					<!-- <input type="text"  name="frontPage" id="frontPage">
+					<input type="text"  name="frontPage1" id="frontPage1">
+					<input type="text"  name="frontPage2" id="frontPage2"> -->
+			
+			</div>
+				<div class="fitem" id="myPicture">
+			</div>
+			<div class="fitem">
+				<label>轮播照片:</label> 
+					<input id="fb1" type="text" style="width:300px" name="upload1">
+					<input class="easyui-linkbutton" type="button" value="重新上传" id="clear1">
 				<input type="hidden"  name="frontPage1" id="frontPage1"/> 
 					<!-- <input type="text"  name="frontPage" id="frontPage">
 					<input type="text"  name="frontPage1" id="frontPage1">
@@ -198,16 +247,7 @@
 			
 			</div>
 			
-				<div class="fitem" id="myPicture">
-				
-					<!-- <img id="img" alt="" src=""  >
-					-->
-					<!-- <img id="img1" alt="" src="" >
-					<input type="text" style="width: 50px" name="frontPage1" id="frontPage1">
-					<img id="img2" alt="" src="" >
-					<input type="text" style="width: 50px" name="frontPage2" id="frontPage2"> -->
-					
-			
+				<div class="fitem" id="myPicture1">
 			</div>
 					
 			
@@ -299,6 +339,7 @@
     }
     
     function uploadFrontPage(newValue, oldValue){
+    	var pic="";
     	if(oldValue != newValue)
     	{
     	    var form = new FormData($( "#fm" )[0]);
@@ -307,31 +348,16 @@
                 url:"${pageContext.request.contextPath}/warehouse/imageUpload",
                 type:"post",
                 data:form,
+                async: false,
+                cache: false,
+                global: false,
                 processData:false,
                 contentType:false,
                 success:function(data){
-                	$("#myPicture").append("<img id=\"img\" alt=\"\" src="+data.url+"?imageView2/1/w/50/h/50/q/75|imageslim  >&nbsp;&nbsp;");
-                	if($("#frontPage").val()==""){
-                		$("#frontPage").val(data.url);
-                	}
-                	$("#frontPage1").val($("#frontPage1").val()+","+data.url); 
-                	
-                	/* if($("#frontPage").val()==""){
-                		$("#frontPage").val(data.url);
-                		$("#img").attr('src',data.url+"?imageView2/1/w/50/h/50/q/75|imageslim");
-                		return true;
-                	}
-                    
-                	if($("#frontPage1").val()==""){
-                		$("#frontPage1").val(data.url);
-                		$("#img1").attr('src',data.url+"?imageView2/1/w/50/h/50/q/75|imageslim");
-                		return true;
-                	}
-                	if($("#frontPage2").val()==""){
-                		$("#frontPage2").val(data.url);
-                		$("#img2").attr('src',data.url+"?imageView2/1/w/50/h/50/q/75|imageslim");
-                		return true; 
-                	}*/
+                	console.log(data);
+                	pic=data.url
+                	$("#myPicture").html("<img id=\"img\" alt=\"\" src="+pic+"?imageView2/1/w/50/h/50/q/75|imageslim  >&nbsp;&nbsp;");
+                	$("#frontPage").val(pic);
                 },
                 error:function(e){
                 	 console.log(form)
@@ -341,6 +367,35 @@
     	}
     }
     
+    
+    function uploadFrontPage1(newValue, oldValue){
+    	var pic="";
+    	if(oldValue != newValue)
+    	{
+    	    var form = new FormData($( "#fm" )[0]);
+    	    form.append("upload1",newValue); 
+            $.ajax({
+                url:"${pageContext.request.contextPath}/warehouse/imageUpload1",
+                type:"post",
+                data:form,
+                async: false, 
+                processData:false,
+                contentType:false,
+                success:function(data){
+                	pic=data.url
+                	$("#myPicture1").append("<img id=\"img\" alt=\"\" src="+pic+"?imageView2/1/w/50/h/50/q/75|imageslim  >&nbsp;&nbsp;");
+                	$("#frontPage1").val($("#frontPage1").val()+","+pic); 
+                	
+                },
+                error:function(e){
+                	 console.log(form)
+                    alert("上传图片过大错误！！");
+                }
+            });        
+    	}
+    }
+    
+    
 	/*上传照片  */
 	var array = new Array();
 
@@ -349,9 +404,6 @@
 		uploader.start();
 	});
 	$('#upload1').bind('click', function() {
-		uploader.start();
-	});
-	$('#upload2').bind('click', function() {
 		uploader.start();
 	});
 	var url;
@@ -398,7 +450,10 @@
 						area: $("#area").val(),
 						article: CKEDITOR.instances.editor1.getData(),
 						frontPage : $("#frontPage").val(),
-						frontPage1 : $("#frontPage1").val()
+						frontPage1 : $("#frontPage1").val(),
+						frontPage2 : $("#frontPage2").val(),
+						position : $("#position").val(),
+						sort:$("#sort").val()
 						
 					},
 					error : function(request) {
@@ -445,11 +500,14 @@
 		});
 	}
 	$(function(){
-	$("#clear").click(function(){
-	$("#myPicture").html("");
-	$("#frontPage").val("");
+	$("#clear1").click(function(){
+	$("#myPicture1").html("");
 	$("#frontPage1").val("")
 	});
+	$("#clear").click(function(){
+		$("#myPicture").html("");
+		$("#frontPage").val("")
+		});
 	
 	});
 	

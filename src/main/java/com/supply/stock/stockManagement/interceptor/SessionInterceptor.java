@@ -17,7 +17,8 @@ public class SessionInterceptor implements HandlerInterceptor {
 			return true;
 		} else if (request.getRequestURI().toString().equals("/stockManagement/weindex")
 				||request.getRequestURI().toString().equals("/error")
-				||request.getRequestURI().toString().equals("/stockManagement/")){
+				||request.getRequestURI().toString().equals("/stockManagement/")
+				||request.getRequestURI().toString().equals("/stockManagement/order/appointmentIndex")){
 			System.out.println(request.getRequestURI());
 			return true;
 		}else {

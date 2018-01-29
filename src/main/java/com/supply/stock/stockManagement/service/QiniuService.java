@@ -11,6 +11,7 @@ import com.qiniu.http.Response;
 import com.qiniu.storage.Configuration;
 import com.qiniu.storage.UploadManager;
 import com.qiniu.util.Auth;
+import com.qiniu.util.StringMap;
  
 @Service("qiniuService")
 public class QiniuService {
@@ -31,10 +32,12 @@ public class QiniuService {
 	// 创建上传对象
 	UploadManager uploadManager = new UploadManager(cfg);
 
-	String upToken = auth.uploadToken(bucketname);
-
+	/*String upToken = auth.uploadToken(bucketname);*/
+	
+	
 
 	public boolean upload(MultipartFile file, String key) {
+		String upToken=auth.uploadToken(bucketname, null, 72000, new StringMap().put("endUser", "uid").putNotEmpty("returnBody", ""), true);
 		try {
 			// 调用put方法上传
 			Response res = uploadManager.put(file.getBytes(), key, upToken);
