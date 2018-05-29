@@ -181,7 +181,7 @@
 			searcher="search" prompt="请输入关键字" name="keywords">
 	</div>
 	<!--Dialog 增加 -->
-	<div id="dlg" class="easyui-dialog"
+	<div  id="dlg" class="easyui-dialog"
 		style="width: 800px; height: 600px; padding: 10px 20px" closed="true"
 		buttons="#dlg-buttons">
 		<div class="ftitle">仓库信息</div>
@@ -200,14 +200,16 @@
 					class="easyui-validatebox" required=" ture">
 			</div>
 			<div class="fitem">
-				<div style="display:inline-block;width: 80px;">省份:</div> <select id='province' style="width:100px;margin-right:50px" onchange='search(this)'></select>
-				<div style="display:inline-block;width: 80px;">城市:</div> <select id='city' style="width:100px;margin-right:50px" onchange='search(this)'></select>
-				<div style="display:inline-block;width: 80px;">区域:</div> <select id='district' style="width:100px;margin-right:50px" onchange='search(this)'></select>
+				<div style="display:inline-block;width: 80px;">省份:</div> <select   id='province' style="width:100px;margin-right:50px" onchange='search(this)' ><option value="province" id="province1" selected="true"></option></select>
+				<div style="display:inline-block;width: 80px;">城市:</div> <select  id='city' style="width:100px;margin-right:50px" onchange='search(this)'><option value="city" id="city1" selected="true"></option></select>
+				<div style="display:inline-block;width: 80px;">区域:</div> <select  id='district' style="width:100px;margin-right:50px" onchange='search(this)'><option value="district" id="district1" selected="true"></option></select>
 			</div>
-			
+			<input type="hidden" name="province" id='province2'>
+			<input type="hidden" name="city" id='city2'>
+			<input type="hidden"  name="district" id='district2'>
 			<div class="fitem">
 				<label>地址:</label> <input name="address" style="width: 330px" id="address"
-					class="easyui-validatebox" readonly="readonly" required=" ture">
+					class="easyui-validatebox"  required=" ture">
 					
 					<input id="position" type="hidden"  name="position" value="">
 					
@@ -272,7 +274,7 @@
 
 <script type="text/javascript" src="http://webapi.amap.com/demos/js/liteToolbar.js"></script>
 
-<script type="text/javascript">
+<script type="text/javascript">			
     var district, citycode;
     var provinceSelect = document.getElementById('province');
     var citySelect = document.getElementById('city');
@@ -421,13 +423,16 @@
 			$('#fm').form('load', row);
 			console.log(row);
 			$('id').val(row.id);
-			//$('#province').val('北京市');
-			//$("#province option[text='北京市']").attr("selected", true); 
-			provinceSelect.text = '北京市';
-			console.log($("#province option[text='北京市']"));
-			console.log($('#province').val());
+			/*$('#province').val('北京市');
+			$("#province option[text='北京市']").attr("selected", true); 
+			provinceSelect.text = '北京市';		
+			console.log($("#province option[text='北京市']")); */
+			$('#province1').text(row.province);
+			$('#city1').text(row.city);
+			$('#district1').text(row.district);
 			CKEDITOR.instances.editor1.setData(row.article);
 			url = "${pageContext.request.contextPath}" + '/warehouse/update'
+			
 		}else{
 			$.messager.alert("提示", "请先选择仓库");
 		}
@@ -467,6 +472,7 @@
 							});
 							$('#dlg').dialog('close'); // close the dialog
 							$('#dg').datagrid('reload'); // reload the user data
+							location.reload(); 
 						} else {
 							$.messager.show({
 								title : "失败",
